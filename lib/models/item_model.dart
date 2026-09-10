@@ -11,6 +11,7 @@ class ItemModel {
   final double longitude;
   final String ownerId;
   final DateTime createdAt;
+  final double estimatedValue;
 
   ItemModel({
     required this.id,
@@ -23,6 +24,7 @@ class ItemModel {
     required this.longitude,
     required this.ownerId,
     required this.createdAt,
+    required this.estimatedValue
   });
 
   // Convert ItemModel to Map for Firestore storage
@@ -38,6 +40,7 @@ class ItemModel {
       'longitude': longitude,
       'ownerId': ownerId,
       'createdAt': createdAt.toIso8601String(),
+      'estimatedValue': estimatedValue
     };
   }
 
@@ -59,6 +62,7 @@ class ItemModel {
       latitude: (map['latitude'] as num?)?.toDouble() ?? 0.0,
       longitude: (map['longitude'] as num?)?.toDouble() ?? 0.0,
       ownerId: map['ownerId'] ?? 'anonymous',
+      estimatedValue: (map['estimatedValue'] as num?)?.toDouble() ?? 0.0,
       createdAt: map['createdAt'] != null
           ? DateTime.parse(map['createdAt'].toString())
           : DateTime.now(),

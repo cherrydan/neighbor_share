@@ -17,6 +17,7 @@ void main() {
         latitude: 38.7223,  // Координаты Лиссабона 🇵🇹
         longitude: -9.1393,
         ownerId: 'user_neighbor_1',
+        estimatedValue: 150.0,
         createdAt: now,
       );
 
@@ -34,6 +35,8 @@ void main() {
       expect(restoredItem.latitude, equals(38.7223));
       expect(restoredItem.longitude, equals(-9.1393));
       expect(restoredItem.ownerId, equals('user_neighbor_1'));
+      expect(restoredItem.estimatedValue, equals(150.0));
+      expect(restoredItem.createdAt.toIso8601String(), equals(now.toIso8601String()));
     });
   });
 }
