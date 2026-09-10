@@ -6,6 +6,7 @@
   "profileTab": "Профиль соседа",
   "estimatedValueLabel": "Цена в магазине ($)",
   "totalSavedTitle": "Сэкономлено денег",
-  "returnDateTitle": "Вернуть до"
+  "returnDateTitle": "Вернуть до",
+  "itemsBorrowedLabel": "Одолжено вещей у соседей: {count} 📦"
 
 }

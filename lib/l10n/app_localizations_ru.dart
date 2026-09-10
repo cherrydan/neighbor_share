@@ -31,4 +31,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get returnDateTitle => 'Вернуть до';
+
+  @override
+  String itemsBorrowedLabel(Object count) {
+    return 'Одолжено вещей у соседей: $count 📦';
+  }
 }

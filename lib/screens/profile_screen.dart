@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neighbor_share/widgets/saved_money_card.dart';
 import '../l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -10,10 +11,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(l10n.profileTab)),
       body: Center(
-        child: Text(
-          l10n.profileTab,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
+        child: SavedMoneyCard(totalSaved: 123.45, itemsBorrowedCount: 1),
       ),
     );
   }

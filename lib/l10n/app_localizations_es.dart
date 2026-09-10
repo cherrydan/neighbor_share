@@ -31,4 +31,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get returnDateTitle => 'Devolver antes de';
+
+  @override
+  String itemsBorrowedLabel(Object count) {
+    return 'Artículos pedidos a vecinos: $count 📦';
+  }
 }

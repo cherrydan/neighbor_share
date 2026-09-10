@@ -149,6 +149,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Вернуть до'**
   String get returnDateTitle;
+
+  /// No description provided for @itemsBorrowedLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Одолжено вещей у соседей: {count} 📦'**
+  String itemsBorrowedLabel(Object count);
 }
 
 class _AppLocalizationsDelegate

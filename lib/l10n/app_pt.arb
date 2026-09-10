@@ -6,6 +6,7 @@
   "profileTab": "Perfil do vizinho",
   "estimatedValueLabel": "Preço na loja ($)",
   "totalSavedTitle": "Dinheiro poupado",
-  "returnDateTitle": "Devolver até"
+  "returnDateTitle": "Devolver até",
+  "itemsBorrowedLabel": "Itens pedidos aos vizinhos: {count} 📦"
 
 }

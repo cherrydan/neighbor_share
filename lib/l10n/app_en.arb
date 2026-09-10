@@ -6,6 +6,7 @@
   "profileTab": "Neighbor Profile",
   "estimatedValueLabel": "Store price ($)",
   "totalSavedTitle": "Money Saved",
-  "returnDateTitle": "Return due"
+  "returnDateTitle": "Return due",
+  "itemsBorrowedLabel": "Items borrowed from neighbors: {count} 📦"
 
 }
