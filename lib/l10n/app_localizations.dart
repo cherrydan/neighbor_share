@@ -155,6 +155,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Одолжено вещей у соседей: {count} 📦'**
   String itemsBorrowedLabel(Object count);
+
+  /// No description provided for @activeLoanTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Активная аренда вещeй ⏳'**
+  String get activeLoanTitle;
+
+  /// No description provided for @returnTimeRemaining.
+  ///
+  /// In ru, this message translates to:
+  /// **'Осталось времени: {hours} ч.'**
+  String returnTimeRemaining(Object hours);
+
+  /// No description provided for @loanOverdueWarning.
+  ///
+  /// In ru, this message translates to:
+  /// **'Срок возврата истек! 🔴'**
+  String get loanOverdueWarning;
 }
 
 class _AppLocalizationsDelegate

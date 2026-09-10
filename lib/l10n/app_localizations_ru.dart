@@ -36,4 +36,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String itemsBorrowedLabel(Object count) {
     return 'Одолжено вещей у соседей: $count 📦';
   }
+
+  @override
+  String get activeLoanTitle => 'Активная аренда вещeй ⏳';
+
+  @override
+  String returnTimeRemaining(Object hours) {
+    return 'Осталось времени: $hours ч.';
+  }
+
+  @override
+  String get loanOverdueWarning => 'Срок возврата истек! 🔴';
 }

@@ -36,4 +36,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String itemsBorrowedLabel(Object count) {
     return 'Itens pedidos aos vizinhos: $count 📦';
   }
+
+  @override
+  String get activeLoanTitle => 'Empréstimo de item ativo ⏳';
+
+  @override
+  String returnTimeRemaining(Object hours) {
+    return 'Tempo restante: $hours h';
+  }
+
+  @override
+  String get loanOverdueWarning => 'Prazo de devolução vencido! 🔴';
 }

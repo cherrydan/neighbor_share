@@ -7,6 +7,10 @@
   "estimatedValueLabel": "Precio en tienda ($)",
   "totalSavedTitle": "Dinero ahorrado",
   "returnDateTitle": "Devolver antes de",
-  "itemsBorrowedLabel": "Artículos pedidos a vecinos: {count} 📦"
+  "itemsBorrowedLabel": "Artículos pedidos a vecinos: {count} 📦",
+  "activeLoanTitle": "Préstamo de artículo activo ⏳",
+  "returnTimeRemaining": "Tiempo restante: {hours} h",
+  "loanOverdueWarning": "¡Plazo de devolución vencido! 🔴"
+
 
 }

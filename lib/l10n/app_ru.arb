@@ -7,6 +7,10 @@
   "estimatedValueLabel": "Цена в магазине ($)",
   "totalSavedTitle": "Сэкономлено денег",
   "returnDateTitle": "Вернуть до",
-  "itemsBorrowedLabel": "Одолжено вещей у соседей: {count} 📦"
+  "itemsBorrowedLabel": "Одолжено вещей у соседей: {count} 📦",
+  "activeLoanTitle": "Активная аренда вещeй ⏳",
+  "returnTimeRemaining": "Осталось времени: {hours} ч.",
+  "loanOverdueWarning": "Срок возврата истек! 🔴"
+
 
 }

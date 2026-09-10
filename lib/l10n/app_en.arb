@@ -7,6 +7,10 @@
   "estimatedValueLabel": "Store price ($)",
   "totalSavedTitle": "Money Saved",
   "returnDateTitle": "Return due",
-  "itemsBorrowedLabel": "Items borrowed from neighbors: {count} 📦"
+  "itemsBorrowedLabel": "Items borrowed from neighbors: {count} 📦",
+  "activeLoanTitle": "Active Item Loan ⏳",
+  "returnTimeRemaining": "Time remaining: {hours} hrs",
+  "loanOverdueWarning": "Return date overdue! 🔴"
+
 
 }
