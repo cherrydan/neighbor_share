@@ -131,6 +131,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Профиль соседа'**
   String get profileTab;
+
+  /// No description provided for @estimatedValueLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Цена в магазине (\$)'**
+  String get estimatedValueLabel;
+
+  /// No description provided for @totalSavedTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Сэкономлено денег'**
+  String get totalSavedTitle;
+
+  /// No description provided for @returnDateTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вернуть до'**
+  String get returnDateTitle;
 }
 
 class _AppLocalizationsDelegate

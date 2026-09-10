@@ -3,5 +3,9 @@
   "appTagline": "Share with neighbors — save & help! 🛍️🏡",
   "feedTab": "Items Feed",
   "mapTab": "Items Map",
-  "profileTab": "Neighbor Profile"
+  "profileTab": "Neighbor Profile",
+  "estimatedValueLabel": "Store price ($)",
+  "totalSavedTitle": "Money Saved",
+  "returnDateTitle": "Return due"
+
 }

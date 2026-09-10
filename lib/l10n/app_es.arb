@@ -3,5 +3,9 @@
   "appTagline": "¡Comparte con tus vecinos — ahorra y ayuda! 🛍️🏡",
   "feedTab": "Artículos",
   "mapTab": "Mapa de artículos",
-  "profileTab": "Perfil del vecino"
+  "profileTab": "Perfil del vecino",
+  "estimatedValueLabel": "Precio en tienda ($)",
+  "totalSavedTitle": "Dinero ahorrado",
+  "returnDateTitle": "Devolver antes de"
+
 }

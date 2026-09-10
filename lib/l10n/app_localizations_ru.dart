@@ -22,4 +22,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get profileTab => 'Профиль соседа';
+
+  @override
+  String get estimatedValueLabel => 'Цена в магазине (\$)';
+
+  @override
+  String get totalSavedTitle => 'Сэкономлено денег';
+
+  @override
+  String get returnDateTitle => 'Вернуть до';
 }

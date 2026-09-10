@@ -22,4 +22,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get profileTab => 'Perfil do vizinho';
+
+  @override
+  String get estimatedValueLabel => 'Preço na loja (\$)';
+
+  @override
+  String get totalSavedTitle => 'Dinheiro poupado';
+
+  @override
+  String get returnDateTitle => 'Devolver até';
 }

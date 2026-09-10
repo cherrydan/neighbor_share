@@ -3,5 +3,9 @@
   "appTagline": "Делись с соседями — экономь и помогай! 🛍️🏡",
   "feedTab": "Лента вещeй",
   "mapTab": "Карта вещeй",
-  "profileTab": "Профиль соседа"
+  "profileTab": "Профиль соседа",
+  "estimatedValueLabel": "Цена в магазине ($)",
+  "totalSavedTitle": "Сэкономлено денег",
+  "returnDateTitle": "Вернуть до"
+
 }
