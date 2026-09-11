@@ -47,4 +47,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get loanOverdueWarning => '¡Plazo de devolución vencido! 🔴';
+
+  @override
+  String get conditionPassportTitle => 'Pasaporte de conservación 🛡️';
+
+  @override
+  String get photoBeforeLabel => 'Antes del préstamo';
+
+  @override
+  String get photoAfterLabel => 'Al devolver';
+
+  @override
+  String get aiInspectButton => 'Inspección IA de conservación 🤖';
+
+  @override
+  String get aiVerdictSuccess => '¡Sin daños detectados! 100% intacto ✅';
 }

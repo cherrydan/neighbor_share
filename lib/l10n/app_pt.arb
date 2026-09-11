@@ -10,7 +10,13 @@
   "itemsBorrowedLabel": "Itens pedidos aos vizinhos: {count} 📦",
   "activeLoanTitle": "Empréstimo de item ativo ⏳",
   "returnTimeRemaining": "Tempo restante: {hours} h",
-  "loanOverdueWarning": "Prazo de devolução vencido! 🔴"
+  "loanOverdueWarning": "Prazo de devolução vencido! 🔴",
+  "conditionPassportTitle": "Passaporte de conservação 🛡️",
+  "photoBeforeLabel": "Antes do empréstimo",
+  "photoAfterLabel": "Na devolução",
+  "aiInspectButton": "Inspeção IA de conservação 🤖",
+  "aiVerdictSuccess": "Sem danos detetados! 100% intacto ✅"
+
 
 
 }

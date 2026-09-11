@@ -10,7 +10,13 @@
   "itemsBorrowedLabel": "Items borrowed from neighbors: {count} 📦",
   "activeLoanTitle": "Active Item Loan ⏳",
   "returnTimeRemaining": "Time remaining: {hours} hrs",
-  "loanOverdueWarning": "Return date overdue! 🔴"
+  "loanOverdueWarning": "Return date overdue! 🔴",
+  "conditionPassportTitle": "Condition Passport 🛡️",
+  "photoBeforeLabel": "Before Loan",
+  "photoAfterLabel": "Upon Return",
+  "aiInspectButton": "AI Condition Inspection 🤖",
+  "aiVerdictSuccess": "No damages detected! 100% Intact ✅"
+
 
 
 }

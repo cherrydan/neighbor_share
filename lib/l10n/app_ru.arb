@@ -10,7 +10,13 @@
   "itemsBorrowedLabel": "Одолжено вещей у соседей: {count} 📦",
   "activeLoanTitle": "Активная аренда вещeй ⏳",
   "returnTimeRemaining": "Осталось времени: {hours} ч.",
-  "loanOverdueWarning": "Срок возврата истек! 🔴"
+  "loanOverdueWarning": "Срок возврата истек! 🔴",
+  "conditionPassportTitle": "Паспорт сохранности 🛡️",
+  "photoBeforeLabel": "До передачи",
+  "photoAfterLabel": "При возврате",
+  "aiInspectButton": "AI Экспертиза сохранности 🤖",
+  "aiVerdictSuccess": "Повреждений не обнаружено! Сохранность 100% ✅"
+
 
 
 }

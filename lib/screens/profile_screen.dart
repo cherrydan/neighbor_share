@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neighbor_share/widgets/item_condition_card.dart';
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
 import '../models/loan_model.dart';
@@ -40,6 +41,10 @@ class ProfileScreen extends StatelessWidget {
           ReturnTimerCard(
             loan: sampleLoan,
             itemName: 'Перфоратор Bosch',
+          ),
+          ItemConditionCard(
+            photoBeforeUrl: 'https://example.com/photo_before.jpg',
+            photoAfterUrl: 'https://example.com/photo_after.jpg',
           ),
         ],
       ),

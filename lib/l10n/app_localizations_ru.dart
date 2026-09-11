@@ -47,4 +47,20 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get loanOverdueWarning => 'Срок возврата истек! 🔴';
+
+  @override
+  String get conditionPassportTitle => 'Паспорт сохранности 🛡️';
+
+  @override
+  String get photoBeforeLabel => 'До передачи';
+
+  @override
+  String get photoAfterLabel => 'При возврате';
+
+  @override
+  String get aiInspectButton => 'AI Экспертиза сохранности 🤖';
+
+  @override
+  String get aiVerdictSuccess =>
+      'Повреждений не обнаружено! Сохранность 100% ✅';
 }

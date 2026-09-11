@@ -47,4 +47,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loanOverdueWarning => 'Return date overdue! 🔴';
+
+  @override
+  String get conditionPassportTitle => 'Condition Passport 🛡️';
+
+  @override
+  String get photoBeforeLabel => 'Before Loan';
+
+  @override
+  String get photoAfterLabel => 'Upon Return';
+
+  @override
+  String get aiInspectButton => 'AI Condition Inspection 🤖';
+
+  @override
+  String get aiVerdictSuccess => 'No damages detected! 100% Intact ✅';
 }

@@ -173,6 +173,36 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Срок возврата истек! 🔴'**
   String get loanOverdueWarning;
+
+  /// No description provided for @conditionPassportTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Паспорт сохранности 🛡️'**
+  String get conditionPassportTitle;
+
+  /// No description provided for @photoBeforeLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'До передачи'**
+  String get photoBeforeLabel;
+
+  /// No description provided for @photoAfterLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'При возврате'**
+  String get photoAfterLabel;
+
+  /// No description provided for @aiInspectButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'AI Экспертиза сохранности 🤖'**
+  String get aiInspectButton;
+
+  /// No description provided for @aiVerdictSuccess.
+  ///
+  /// In ru, this message translates to:
+  /// **'Повреждений не обнаружено! Сохранность 100% ✅'**
+  String get aiVerdictSuccess;
 }
 
 class _AppLocalizationsDelegate
