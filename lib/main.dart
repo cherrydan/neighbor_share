@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'l10n/app_localizations.dart';
 import 'screens/main_tab_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // 🟢 Load environment variables from .env file
+  await dotenv.load(fileName: ".env");
   runApp(const NeighborShareApp());
 }
 
