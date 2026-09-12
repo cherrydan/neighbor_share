@@ -203,6 +203,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Повреждений не обнаружено! Сохранность 100% ✅'**
   String get aiVerdictSuccess;
+
+  /// No description provided for @addBothPhotosWarning.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пожалуйста, добавьте оба фото (До и После)!'**
+  String get addBothPhotosWarning;
 }
 
 class _AppLocalizationsDelegate

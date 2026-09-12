@@ -63,4 +63,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get aiVerdictSuccess =>
       'Повреждений не обнаружено! Сохранность 100% ✅';
+
+  @override
+  String get addBothPhotosWarning =>
+      'Пожалуйста, добавьте оба фото (До и После)!';
 }

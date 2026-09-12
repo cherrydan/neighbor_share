@@ -15,7 +15,9 @@
   "photoBeforeLabel": "До передачи",
   "photoAfterLabel": "При возврате",
   "aiInspectButton": "AI Экспертиза сохранности 🤖",
-  "aiVerdictSuccess": "Повреждений не обнаружено! Сохранность 100% ✅"
+  "aiVerdictSuccess": "Повреждений не обнаружено! Сохранность 100% ✅",
+  "addBothPhotosWarning": "Пожалуйста, добавьте оба фото (До и После)!"
+
 
 
 

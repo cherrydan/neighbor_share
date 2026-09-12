@@ -15,7 +15,9 @@
   "photoBeforeLabel": "Antes do empréstimo",
   "photoAfterLabel": "Na devolução",
   "aiInspectButton": "Inspeção IA de conservação 🤖",
-  "aiVerdictSuccess": "Sem danos detetados! 100% intacto ✅"
+  "aiVerdictSuccess": "Sem danos detetados! 100% intacto ✅",
+  "addBothPhotosWarning": "Por favor, adicione ambas as fotos (Antes e Depois)!"
+
 
 
 

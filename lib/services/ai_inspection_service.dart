@@ -1,10 +1,10 @@
 import 'dart:typed_data';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 class AiInspectionService {
   // 🟢 Вставь сюда свой скопированный бесплатный ключ:
-  static String get _apiKey => dotenv.env['GEMINI_API_KEY'] ?? '';
+  static const String _apiKey = 'AQ.Ab8RN6LeTURj-L7RAACbkdTogYVz-MPGrtjOg-kaAHLzj3bcnQ';
 
   static Future<String> inspectItemCondition({
     required Uint8List photoBeforeBytes,
@@ -12,8 +12,10 @@ class AiInspectionService {
     required String languageCode,
   }) async {
     try {
+      
+
       final model = GenerativeModel(
-        model: 'gemini-1.5-flash',
+       model: 'gemini-1.5-flash',
         apiKey: _apiKey,
       );
 

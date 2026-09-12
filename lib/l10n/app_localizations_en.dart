@@ -62,4 +62,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aiVerdictSuccess => 'No damages detected! 100% Intact ✅';
+
+  @override
+  String get addBothPhotosWarning =>
+      'Please add both photos (Before and After)!';
 }

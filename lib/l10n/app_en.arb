@@ -15,7 +15,11 @@
   "photoBeforeLabel": "Before Loan",
   "photoAfterLabel": "Upon Return",
   "aiInspectButton": "AI Condition Inspection 🤖",
-  "aiVerdictSuccess": "No damages detected! 100% Intact ✅"
+  "aiVerdictSuccess": "No damages detected! 100% Intact ✅",
+  "addBothPhotosWarning": "Please add both photos (Before and After)!"
+
+  
+
 
 
 

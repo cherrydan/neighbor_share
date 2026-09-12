@@ -1,4 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:neighbor_share/services/ai_inspection_service.dart';
 import '../l10n/app_localizations.dart';
 
 class ItemConditionCard extends StatefulWidget {
@@ -16,8 +20,27 @@ class ItemConditionCard extends StatefulWidget {
 }
 
 class _ItemConditionCardState extends State<ItemConditionCard> {
+  Uint8List? _beforeBytes;
+  Uint8List? _afterBytes;
+
   bool _isAnalyzing = false;
   String? _aiVerdict;
+
+  Future<void> _pickImage(bool isBefore) async {
+  final picker = ImagePicker();
+  final picked = await picker.pickImage(source: ImageSource.gallery, imageQuality: 70);
+  if (picked != null) {
+    final bytes = await picked.readAsBytes();
+    setState(() {
+      if (isBefore) {
+        _beforeBytes = bytes;
+      } else {
+        _afterBytes = bytes;
+      }
+    });
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +75,8 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
                   child: _buildPhotoSlot(
                     label: l10n.photoBeforeLabel,
                     icon: Icons.camera_alt_outlined,
-                    imageUrl: widget.photoBeforeUrl,
+                    imageBytes: _beforeBytes,
+                    onTap: () => _pickImage(true),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -62,32 +86,47 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
                   child: _buildPhotoSlot(
                     label: l10n.photoAfterLabel,
                     icon: Icons.assignment_turned_in_outlined,
-                    imageUrl: widget.photoAfterUrl,
+                    imageBytes: _afterBytes,
+                    onTap: () => _pickImage(false),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
 
-            // Кнопка AI Анализа
+                        // Кнопка AI Анализа
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: _isAnalyzing
                     ? null
                     : () async {
+                        // Проверяем, выбраны ли оба фото:
+                        if (_beforeBytes == null || _afterBytes == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(l10n.addBothPhotosWarning)),
+                          );
+                          return;
+                        }
+
                         setState(() {
                           _isAnalyzing = true;
                           _aiVerdict = null;
                         });
 
-                        // 🟢 Имитируем запрос к бесплатному ChatGPT AI (2 секунды)
-                        await Future.delayed(const Duration(seconds: 2));
+                        final languageCode = Localizations.localeOf(context).languageCode;
+
+                        final verdict = await AiInspectionService.inspectItemCondition(
+                          photoBeforeBytes: _beforeBytes!,
+                          photoAfterBytes: _afterBytes!,
+                          languageCode: languageCode,
+                        );
 
                         if (!mounted) return;
+
                         setState(() {
                           _isAnalyzing = false;
-                          _aiVerdict = l10n.aiVerdictSuccess;
+                          _aiVerdict = verdict;
                         });
                       },
                 icon: _isAnalyzing
@@ -102,10 +141,13 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
                   backgroundColor: Colors.indigo,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
               ),
             ),
+
 
             // Вывод вердикта AI
             if (_aiVerdict != null) ...[
@@ -143,26 +185,45 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
   }
 
   // Вспомогательный слот для фото
-  Widget _buildPhotoSlot({required String label, required IconData icon, String? imageUrl}) {
-    return Container(
+  Widget _buildPhotoSlot({
+  required String label,
+  required IconData icon,
+  required Uint8List? imageBytes,
+  required VoidCallback onTap,
+}) {
+  return InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(12),
+    child: Container(
       height: 110,
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.grey.shade300),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 36, color: Colors.grey.shade600),
-          const SizedBox(height: 6),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.grey.shade700),
-          ),
-        ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: imageBytes != null
+            ? Image.memory(imageBytes, fit: BoxFit.cover, width: double.infinity)
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(icon, size: 36, color: Colors.grey.shade600),
+                  const SizedBox(height: 6),
+                  Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade700,
+                    ),
+                  ),
+                ],
+              ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
