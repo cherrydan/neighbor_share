@@ -4,8 +4,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 
 class AiInspectionService {
   // 🟢 Вставь сюда свой скопированный бесплатный ключ:
-  static const String _apiKey = 'AQ.Ab8RN6LeTURj-L7RAACbkdTogYVz-MPGrtjOg-kaAHLzj3bcnQ';
-
+  static const String _apiKey = String.fromEnvironment('GEMINI_API_KEY');
   static Future<String> inspectItemCondition({
     required Uint8List photoBeforeBytes,
     required Uint8List photoAfterBytes,
