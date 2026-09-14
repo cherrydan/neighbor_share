@@ -44,6 +44,13 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
 
   @override
   Widget build(BuildContext context) {
+    // Внутри build перед return или прямо перед блоком плашки:
+    final bool isSuccess = _aiVerdict != null && _aiVerdict!.startsWith('✅');
+    final Color verdictColor = isSuccess ? Colors.green : Colors.red.shade700;
+    final Color verdictBgColor = isSuccess ? Colors.green.shade50 : Colors.red.shade50;
+    final Color verdictBorderColor = isSuccess ? Colors.green.shade300 : Colors.red.shade300;
+    final IconData verdictIcon = isSuccess ? Icons.check_circle_rounded : Icons.warning_amber_rounded;
+
     final l10n = AppLocalizations.of(context)!;
 
     return Card(
@@ -151,33 +158,35 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
 
             // Вывод вердикта AI
             if (_aiVerdict != null) ...[
-              const SizedBox(height: 12),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.green.shade50,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.green.shade300),
-                ),
-                child: Row(
-                  children: [
-                    const Icon(Icons.check_circle_rounded, color: Colors.green, size: 20),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        _aiVerdict!,
-                        style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+  const SizedBox(height: 12),
+  Container(
+    width: double.infinity,
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: verdictBgColor,
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(color: verdictBorderColor),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(verdictIcon, color: verdictColor, size: 20),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            _aiVerdict!,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: verdictColor,
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+],
+
           ],
         ),
       ),

@@ -1,47 +1,77 @@
+import 'dart:convert';
 import 'dart:typed_data';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
 
 class AiInspectionService {
-  // 🟢 Вставь сюда свой скопированный бесплатный ключ:
-  static const String _apiKey = String.fromEnvironment('GEMINI_API_KEY');
+  static String get _apiKey => dotenv.env['GEMINI_API_KEY'] ?? '';
+
   static Future<String> inspectItemCondition({
     required Uint8List photoBeforeBytes,
     required Uint8List photoAfterBytes,
     required String languageCode,
   }) async {
-    try {
-      
+           final url = Uri.parse(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$_apiKey',
+    );
 
-      final model = GenerativeModel(
-       model: 'gemini-1.5-flash',
-        apiKey: _apiKey,
+   
+
+
+    final prompt = '''
+                    You are an expert inspecting borrowed items for damages.
+                    Compare these two images (Image 1: Before loan, Image 2: After return).
+                    Identify any new scratches, cracks, dirt, or damages.
+                    Provide a concise 2-sentence verdict.
+                    Respond strictly in language: $languageCode.
+                    If in good condition, begin with "✅" followed by the localized verdict.
+                    ''';
+
+
+    final body = jsonEncode({
+      "contents": [
+        {
+          "parts": [
+            {"text": prompt},
+            {
+              "inline_data": {
+                "mime_type": "image/jpeg",
+                "data": base64Encode(photoBeforeBytes),
+              }
+            },
+            {
+              "inline_data": {
+                "mime_type": "image/jpeg",
+                "data": base64Encode(photoAfterBytes),
+              }
+            }
+          ]
+        }
+      ]
+    });
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: body,
       );
 
-      final prompt = TextPart('''
-Ты — строгий эксперт по оценке сохранности арендованных вещей.
-Перед тобой 2 фотографии одного предмета:
-1. Фотография ДО передачи соседу.
-2. Фотография ПОСЛЕ возврата.
-
-Твоя задача:
-- Сравни обе фотографии.
-- Проверь, появились ли видимые сколы, трещины, глубокие царапины, грязь или поломки.
-- Дай короткий вердикт (максимум 2-3 предложения).
-- Отвечай строго на языке с кодом: $languageCode.
-Если всё в порядке, начни ответ со слов "✅ Состояние отличное:" (или на соответствующем языке).
-''');
-
-      final imageBeforePart = DataPart('image/jpeg', photoBeforeBytes);
-      final imageAfterPart = DataPart('image/jpeg', photoAfterBytes);
-
-      final response = await model.generateContent([
-        Content.multi([prompt, imageBeforePart, imageAfterPart])
-      ]);
-
-      return response.text ?? 'Не удалось получить ответ от нейросети.';
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final candidates = data['candidates'] as List?;
+        if (candidates != null && candidates.isNotEmpty) {
+          final parts = candidates[0]['content']['parts'] as List?;
+          if (parts != null && parts.isNotEmpty) {
+            return parts[0]['text'] as String;
+          }
+        }
+        return 'Не удалось получить текст от нейросети.';
+      } else {
+        return 'Ошибка Google API (${response.statusCode}): ${response.body}';
+      }
     } catch (e) {
-      return 'Ошибка AI экспертизы: $e';
+      return 'Сетевая ошибка: $e';
     }
   }
 }
