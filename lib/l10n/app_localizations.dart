@@ -209,6 +209,96 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Пожалуйста, добавьте оба фото (До и После)!'**
   String get addBothPhotosWarning;
+
+  /// No description provided for @categoryAll.
+  ///
+  /// In ru, this message translates to:
+  /// **'Все 📦'**
+  String get categoryAll;
+
+  /// No description provided for @categoryTools.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инструменты 🛠️'**
+  String get categoryTools;
+
+  /// No description provided for @categoryClothes.
+  ///
+  /// In ru, this message translates to:
+  /// **'Одежда 👕'**
+  String get categoryClothes;
+
+  /// No description provided for @categoryCamping.
+  ///
+  /// In ru, this message translates to:
+  /// **'Туризм ⛺️'**
+  String get categoryCamping;
+
+  /// No description provided for @categoryHome.
+  ///
+  /// In ru, this message translates to:
+  /// **'Дом и быт 🏠'**
+  String get categoryHome;
+
+  /// No description provided for @categoryKids.
+  ///
+  /// In ru, this message translates to:
+  /// **'Дети и игры 🧸'**
+  String get categoryKids;
+
+  /// No description provided for @categoryElectronics.
+  ///
+  /// In ru, this message translates to:
+  /// **'Электроника 🔌'**
+  String get categoryElectronics;
+
+  /// No description provided for @categoryAuto.
+  ///
+  /// In ru, this message translates to:
+  /// **'Авто и мото 🚗'**
+  String get categoryAuto;
+
+  /// No description provided for @categoryOther.
+  ///
+  /// In ru, this message translates to:
+  /// **'Другое 📦'**
+  String get categoryOther;
+
+  /// No description provided for @statusAvailable.
+  ///
+  /// In ru, this message translates to:
+  /// **'Свободно'**
+  String get statusAvailable;
+
+  /// No description provided for @statusInUse.
+  ///
+  /// In ru, this message translates to:
+  /// **'В аренде'**
+  String get statusInUse;
+
+  /// No description provided for @statusRequested.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ищут'**
+  String get statusRequested;
+
+  /// No description provided for @savingsBadge.
+  ///
+  /// In ru, this message translates to:
+  /// **'Экономия: ~\${amount}'**
+  String savingsBadge(Object amount);
+
+  /// No description provided for @shareItemButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Поделиться вещью'**
+  String get shareItemButton;
+
+  /// No description provided for @emptyFeedMessage.
+  ///
+  /// In ru, this message translates to:
+  /// **'В этой категории пока ничего нет 📦'**
+  String get emptyFeedMessage;
 }
 
 class _AppLocalizationsDelegate

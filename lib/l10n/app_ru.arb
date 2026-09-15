@@ -16,9 +16,21 @@
   "photoAfterLabel": "При возврате",
   "aiInspectButton": "AI Экспертиза сохранности 🤖",
   "aiVerdictSuccess": "Повреждений не обнаружено! Сохранность 100% ✅",
-  "addBothPhotosWarning": "Пожалуйста, добавьте оба фото (До и После)!"
-
-
-
+  "addBothPhotosWarning": "Пожалуйста, добавьте оба фото (До и После)!",
+  "categoryAll": "Все 📦",
+  "categoryTools": "Инструменты 🛠️",
+  "categoryClothes": "Одежда 👕",
+  "categoryCamping": "Туризм ⛺️",
+  "categoryHome": "Дом и быт 🏠",
+  "categoryKids": "Дети и игры 🧸",
+  "categoryElectronics": "Электроника 🔌",
+  "categoryAuto": "Авто и мото 🚗",
+  "categoryOther": "Другое 📦",
+  "statusAvailable": "Свободно",
+  "statusInUse": "В аренде",
+  "statusRequested": "Ищут",
+  "savingsBadge": "Экономия: ~${amount}",
+  "shareItemButton": "Поделиться вещью",
+  "emptyFeedMessage": "В этой категории пока ничего нет 📦"
 
 }

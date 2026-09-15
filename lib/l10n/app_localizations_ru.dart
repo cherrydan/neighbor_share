@@ -67,4 +67,51 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get addBothPhotosWarning =>
       'Пожалуйста, добавьте оба фото (До и После)!';
+
+  @override
+  String get categoryAll => 'Все 📦';
+
+  @override
+  String get categoryTools => 'Инструменты 🛠️';
+
+  @override
+  String get categoryClothes => 'Одежда 👕';
+
+  @override
+  String get categoryCamping => 'Туризм ⛺️';
+
+  @override
+  String get categoryHome => 'Дом и быт 🏠';
+
+  @override
+  String get categoryKids => 'Дети и игры 🧸';
+
+  @override
+  String get categoryElectronics => 'Электроника 🔌';
+
+  @override
+  String get categoryAuto => 'Авто и мото 🚗';
+
+  @override
+  String get categoryOther => 'Другое 📦';
+
+  @override
+  String get statusAvailable => 'Свободно';
+
+  @override
+  String get statusInUse => 'В аренде';
+
+  @override
+  String get statusRequested => 'Ищут';
+
+  @override
+  String savingsBadge(Object amount) {
+    return 'Экономия: ~\$$amount';
+  }
+
+  @override
+  String get shareItemButton => 'Поделиться вещью';
+
+  @override
+  String get emptyFeedMessage => 'В этой категории пока ничего нет 📦';
 }

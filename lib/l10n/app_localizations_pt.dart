@@ -66,4 +66,51 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get addBothPhotosWarning =>
       'Por favor, adicione ambas as fotos (Antes e Depois)!';
+
+  @override
+  String get categoryAll => 'Todos 📦';
+
+  @override
+  String get categoryTools => 'Ferramentas 🛠️';
+
+  @override
+  String get categoryClothes => 'Roupas 👕';
+
+  @override
+  String get categoryCamping => 'Campismo ⛺️';
+
+  @override
+  String get categoryHome => 'Casa 🏠';
+
+  @override
+  String get categoryKids => 'Crianças 🧸';
+
+  @override
+  String get categoryElectronics => 'Eletrónicos 🔌';
+
+  @override
+  String get categoryAuto => 'Auto 🚗';
+
+  @override
+  String get categoryOther => 'Outro 📦';
+
+  @override
+  String get statusAvailable => 'Disponível';
+
+  @override
+  String get statusInUse => 'Em uso';
+
+  @override
+  String get statusRequested => 'Procurado';
+
+  @override
+  String savingsBadge(Object amount) {
+    return 'Poupança: ~\$$amount';
+  }
+
+  @override
+  String get shareItemButton => 'Partilhar um item';
+
+  @override
+  String get emptyFeedMessage => 'Ainda nada nesta categoria 📦';
 }

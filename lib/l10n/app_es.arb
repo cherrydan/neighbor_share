@@ -16,7 +16,25 @@
   "photoAfterLabel": "Al devolver",
   "aiInspectButton": "Inspección IA de conservación 🤖",
   "aiVerdictSuccess": "¡Sin daños detectados! 100% intacto ✅",
-  "addBothPhotosWarning": "¡Por favor, añade ambas fotos (Antes y Después)!"
+  "addBothPhotosWarning": "¡Por favor, añade ambas fotos (Antes y Después)!",
+  "categoryAll": "Todos 📦",
+  "categoryTools": "Herramientas 🛠️",
+  "categoryClothes": "Ropa 👕",
+  "categoryCamping": "Camping ⛺️",
+  "categoryHome": "Hogar 🏠",
+  "categoryKids": "Niños 🧸",
+  "categoryElectronics": "Electrónica 🔌",
+  "categoryAuto": "Auto 🚗",
+  "categoryOther": "Otro 📦",
+  "statusAvailable": "Disponible",
+  "statusInUse": "En uso",
+  "statusRequested": "Buscado",
+  "savingsBadge": "Ahorro: ~${amount}",
+  "shareItemButton": "Compartir artículo",
+  "emptyFeedMessage": "Nada en esta categoría todavía 📦"
+
+
+
 
 
 
