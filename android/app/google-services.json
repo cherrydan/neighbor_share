@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "341021968841",
+    "project_id": "neighbour-share-app",
+    "storage_bucket": "neighbour-share-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341021968841:android:84e2326ec15712c5534018",
+        "android_client_info": {
+          "package_name": "com.example.neighbor_share"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt9AVskehfiUHlz9cbMJR4zdubi9ZUguQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
