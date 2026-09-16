@@ -113,4 +113,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emptyFeedMessage => 'Nothing in this category yet 📦';
+
+  @override
+  String get addItemTitle => 'Share an Item';
+
+  @override
+  String get itemNameHint => 'Item name (e.g. Drill)';
+
+  @override
+  String get itemDescHint => 'Description & loan terms';
+
+  @override
+  String get itemCategoryLabel => 'Category';
+
+  @override
+  String get itemPriceHint => 'Est. store price (\$)';
+
+  @override
+  String get saveButton => 'Publish';
+
+  @override
+  String get addPhotoLabel => 'Tap to add item photo 📷';
 }

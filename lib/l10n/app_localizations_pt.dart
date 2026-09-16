@@ -113,4 +113,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get emptyFeedMessage => 'Ainda nada nesta categoria 📦';
+
+  @override
+  String get addItemTitle => 'Partilhar um item';
+
+  @override
+  String get itemNameHint => 'Nome do item (ex. Berbequim)';
+
+  @override
+  String get itemDescHint => 'Descrição e termos do empréstimo';
+
+  @override
+  String get itemCategoryLabel => 'Categoria';
+
+  @override
+  String get itemPriceHint => 'Preço aprox. na loja (\$)';
+
+  @override
+  String get saveButton => 'Publicar';
+
+  @override
+  String get addPhotoLabel => 'Toque para adicionar foto do item 📷';
 }

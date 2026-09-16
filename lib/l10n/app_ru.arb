@@ -31,6 +31,15 @@
   "statusRequested": "Ищут",
   "savingsBadge": "Экономия: ~${amount}",
   "shareItemButton": "Поделиться вещью",
-  "emptyFeedMessage": "В этой категории пока ничего нет 📦"
+  "emptyFeedMessage": "В этой категории пока ничего нет 📦",
+  "addItemTitle": "Поделиться вещью",
+  "itemNameHint": "Название вещи (напр. Дрель)",
+  "itemDescHint": "Описание и условия передачи",
+  "itemCategoryLabel": "Категория",
+  "itemPriceHint": "Примерная цена в магазине ($)",
+  "saveButton": "Опубликовать",
+  "addPhotoLabel": "Нажмите, чтобы добавить фото вещи 📷"
+
+
 
 }

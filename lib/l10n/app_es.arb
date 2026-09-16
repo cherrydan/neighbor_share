@@ -31,7 +31,16 @@
   "statusRequested": "Buscado",
   "savingsBadge": "Ahorro: ~${amount}",
   "shareItemButton": "Compartir artículo",
-  "emptyFeedMessage": "Nada en esta categoría todavía 📦"
+  "emptyFeedMessage": "Nada en esta categoría todavía 📦",
+  "addItemTitle": "Compartir artículo",
+  "itemNameHint": "Nombre del artículo (ej. Taladro)",
+  "itemDescHint": "Descripción y condiciones",
+  "itemCategoryLabel": "Categoría",
+  "itemPriceHint": "Precio aprox. en tienda ($)",
+  "saveButton": "Publicar",
+  "addPhotoLabel": "Toca para añadir foto del artículo 📷"
+
+
 
 
 

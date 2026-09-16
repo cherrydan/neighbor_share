@@ -113,4 +113,25 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get emptyFeedMessage => 'Nada en esta categoría todavía 📦';
+
+  @override
+  String get addItemTitle => 'Compartir artículo';
+
+  @override
+  String get itemNameHint => 'Nombre del artículo (ej. Taladro)';
+
+  @override
+  String get itemDescHint => 'Descripción y condiciones';
+
+  @override
+  String get itemCategoryLabel => 'Categoría';
+
+  @override
+  String get itemPriceHint => 'Precio aprox. en tienda (\$)';
+
+  @override
+  String get saveButton => 'Publicar';
+
+  @override
+  String get addPhotoLabel => 'Toca para añadir foto del artículo 📷';
 }

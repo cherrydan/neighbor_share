@@ -299,6 +299,48 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'В этой категории пока ничего нет 📦'**
   String get emptyFeedMessage;
+
+  /// No description provided for @addItemTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Поделиться вещью'**
+  String get addItemTitle;
+
+  /// No description provided for @itemNameHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Название вещи (напр. Дрель)'**
+  String get itemNameHint;
+
+  /// No description provided for @itemDescHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Описание и условия передачи'**
+  String get itemDescHint;
+
+  /// No description provided for @itemCategoryLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Категория'**
+  String get itemCategoryLabel;
+
+  /// No description provided for @itemPriceHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Примерная цена в магазине (\$)'**
+  String get itemPriceHint;
+
+  /// No description provided for @saveButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Опубликовать'**
+  String get saveButton;
+
+  /// No description provided for @addPhotoLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Нажмите, чтобы добавить фото вещи 📷'**
+  String get addPhotoLabel;
 }
 
 class _AppLocalizationsDelegate

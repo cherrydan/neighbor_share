@@ -31,7 +31,16 @@
   "statusRequested": "Requested",
   "savingsBadge": "Savings: ~${amount}",
   "shareItemButton": "Share an Item",
-  "emptyFeedMessage": "Nothing in this category yet 📦"
+  "emptyFeedMessage": "Nothing in this category yet 📦",
+  "addItemTitle": "Share an Item",
+  "itemNameHint": "Item name (e.g. Drill)",
+  "itemDescHint": "Description & loan terms",
+  "itemCategoryLabel": "Category",
+  "itemPriceHint": "Est. store price ($)",
+  "saveButton": "Publish",
+  "addPhotoLabel": "Tap to add item photo 📷"
+
+
 
 
 

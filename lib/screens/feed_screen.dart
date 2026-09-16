@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neighbor_share/screens/add_item_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
 import '../models/item_model.dart';
@@ -142,14 +143,18 @@ class _FeedScreenState extends State<FeedScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Позже здесь откроем форму добавления новой вещи!
-        },
-        backgroundColor: const Color(0xFF2ECC71),
-        foregroundColor: Colors.white,
-        icon: const Icon(Icons.add_rounded),
-        label: Text(l10n.shareItemButton),
-      ),
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddItemScreen()),
+    );
+  },
+  backgroundColor: const Color(0xFF2ECC71),
+  foregroundColor: Colors.white,
+  icon: const Icon(Icons.add_rounded),
+  label: Text(l10n.shareItemButton),
+),
+
     );
   }
 

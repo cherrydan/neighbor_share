@@ -31,7 +31,16 @@
   "statusRequested": "Procurado",
   "savingsBadge": "Poupança: ~${amount}",
   "shareItemButton": "Partilhar um item",
-  "emptyFeedMessage": "Ainda nada nesta categoria 📦"
+  "emptyFeedMessage": "Ainda nada nesta categoria 📦",
+  "addItemTitle": "Partilhar um item",
+  "itemNameHint": "Nome do item (ex. Berbequim)",
+  "itemDescHint": "Descrição e termos do empréstimo",
+  "itemCategoryLabel": "Categoria",
+  "itemPriceHint": "Preço aprox. na loja ($)",
+  "saveButton": "Publicar",
+  "addPhotoLabel": "Toque para adicionar foto do item 📷"
+
+
 
 
 

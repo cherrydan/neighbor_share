@@ -114,4 +114,25 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get emptyFeedMessage => 'В этой категории пока ничего нет 📦';
+
+  @override
+  String get addItemTitle => 'Поделиться вещью';
+
+  @override
+  String get itemNameHint => 'Название вещи (напр. Дрель)';
+
+  @override
+  String get itemDescHint => 'Описание и условия передачи';
+
+  @override
+  String get itemCategoryLabel => 'Категория';
+
+  @override
+  String get itemPriceHint => 'Примерная цена в магазине (\$)';
+
+  @override
+  String get saveButton => 'Опубликовать';
+
+  @override
+  String get addPhotoLabel => 'Нажмите, чтобы добавить фото вещи 📷';
 }
