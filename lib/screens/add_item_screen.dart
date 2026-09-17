@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:neighbor_share/services/cloudinary_service.dart';
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
 import '../models/item_model.dart';
@@ -43,12 +44,19 @@ class _AddItemScreenState extends State<AddItemScreen> {
     }
   }
 
-  Future<void> _saveItem() async {
+    Future<void> _saveItem() async {
     if (!_formKey.currentState!.validate()) return;
 
+    // 🟢 1. СРАЗУ включаем крутилку загрузки:
     setState(() => _isSaving = true);
 
     try {
+      // 🟢 2. Грузим фото, если оно выбрано
+      String? uploadedUrl;
+      if (_imageBytes != null) {
+        uploadedUrl = await CloudinaryService.uploadImage(_imageBytes!);
+      }
+
       final double price = double.tryParse(_priceController.text) ?? 0.0;
 
       final newItem = ItemModel(
@@ -57,7 +65,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
         description: _descController.text.trim(),
         category: _selectedCategory,
         status: ItemStatus.available,
-        imageUrl: null, // Позже прикрутим Cloudinary, пока оставляем null
+        imageUrl: uploadedUrl,
         latitude: 38.7223,
         longitude: -9.1393,
         ownerId: 'danil_user',
@@ -65,6 +73,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
         estimatedValue: price,
       );
 
+      // 🟢 3. Пишем в Firestore
       await ItemService().addItem(newItem);
 
       if (!mounted) return;
@@ -72,12 +81,15 @@ class _AddItemScreenState extends State<AddItemScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Ошибка сохранения: $e')),
+        SnackBar(content: Text('Ошибка: $e')),
       );
     } finally {
-      if (mounted) setState(() => _isSaving = false);
+      if (mounted) {
+        setState(() => _isSaving = false);
+      }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
