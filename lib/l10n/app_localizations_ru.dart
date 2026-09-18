@@ -135,4 +135,23 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get addPhotoLabel => 'Нажмите, чтобы добавить фото вещи 📷';
+
+  @override
+  String get borrowButton => 'Одолжить вещь 🤝';
+
+  @override
+  String get chooseDurationTitle => 'На какой срок вам нужна вещь?';
+
+  @override
+  String durationHours(Object count) {
+    return '$count ч.';
+  }
+
+  @override
+  String durationDays(Object count) {
+    return '$count дн.';
+  }
+
+  @override
+  String get confirmBorrowButton => 'Подтвердить';
 }

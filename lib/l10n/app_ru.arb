@@ -38,8 +38,12 @@
   "itemCategoryLabel": "Категория",
   "itemPriceHint": "Примерная цена в магазине ($)",
   "saveButton": "Опубликовать",
-  "addPhotoLabel": "Нажмите, чтобы добавить фото вещи 📷"
-
-
-
+  "addPhotoLabel": "Нажмите, чтобы добавить фото вещи 📷",
+  "borrowButton": "Одолжить вещь 🤝",
+  "chooseDurationTitle": "На какой срок вам нужна вещь?",
+  "durationHours": "{count} ч.",
+  "durationDays": "{count} дн.",
+  "confirmBorrowButton": "Подтвердить"
 }
+
+

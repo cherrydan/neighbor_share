@@ -341,6 +341,36 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Нажмите, чтобы добавить фото вещи 📷'**
   String get addPhotoLabel;
+
+  /// No description provided for @borrowButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Одолжить вещь 🤝'**
+  String get borrowButton;
+
+  /// No description provided for @chooseDurationTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'На какой срок вам нужна вещь?'**
+  String get chooseDurationTitle;
+
+  /// No description provided for @durationHours.
+  ///
+  /// In ru, this message translates to:
+  /// **'{count} ч.'**
+  String durationHours(Object count);
+
+  /// No description provided for @durationDays.
+  ///
+  /// In ru, this message translates to:
+  /// **'{count} дн.'**
+  String durationDays(Object count);
+
+  /// No description provided for @confirmBorrowButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Подтвердить'**
+  String get confirmBorrowButton;
 }
 
 class _AppLocalizationsDelegate

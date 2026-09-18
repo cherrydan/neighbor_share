@@ -38,16 +38,17 @@
   "itemCategoryLabel": "Category",
   "itemPriceHint": "Est. store price ($)",
   "saveButton": "Publish",
-  "addPhotoLabel": "Tap to add item photo 📷"
-
-
-
-
-
-
-  
-
-
-
-
+  "addPhotoLabel": "Tap to add item photo 📷",
+  "borrowButton": "Borrow Item 🤝",
+  "chooseDurationTitle": "How long do you need it for?",
+  "durationHours": "{count} hrs",
+  "durationDays": "{count} days",
+  "confirmBorrowButton": "Confirm"
 }
+
+
+
+
+
+
+

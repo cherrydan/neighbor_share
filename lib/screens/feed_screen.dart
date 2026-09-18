@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neighbor_share/screens/item_details_screen.dart';
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
 import '../models/item_model.dart';
@@ -96,11 +97,17 @@ class _FeedScreenState extends State<FeedScreen> {
                   itemBuilder: (context, index) {
                     final item = filteredItems[index];
                     return ItemCard(
-                      item: item,
-                      onTap: () {
-                        // Детальный просмотр вещeй откроем позже!
-                      },
-                    );
+                            item: item,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ItemDetailsScreen(item: item),
+                                ),
+                              );
+                            },
+                          );
+
                   },
                 );
               },

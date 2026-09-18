@@ -38,14 +38,19 @@
   "itemCategoryLabel": "Categoría",
   "itemPriceHint": "Precio aprox. en tienda ($)",
   "saveButton": "Publicar",
-  "addPhotoLabel": "Toca para añadir foto del artículo 📷"
-
-
-
-
-
-
-
-
-
+  "addPhotoLabel": "Toca para añadir foto del artículo 📷",
+  "borrowButton": "Pedir prestado 🤝",
+  "chooseDurationTitle": "¿Por cuánto tiempo lo necesitas?",
+  "durationHours": "{count} h",
+  "durationDays": "{count} días",
+  "confirmBorrowButton": "Confirmar"
 }
+
+
+
+
+
+
+
+
+

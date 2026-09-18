@@ -134,4 +134,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addPhotoLabel => 'Tap to add item photo 📷';
+
+  @override
+  String get borrowButton => 'Borrow Item 🤝';
+
+  @override
+  String get chooseDurationTitle => 'How long do you need it for?';
+
+  @override
+  String durationHours(Object count) {
+    return '$count hrs';
+  }
+
+  @override
+  String durationDays(Object count) {
+    return '$count days';
+  }
+
+  @override
+  String get confirmBorrowButton => 'Confirm';
 }

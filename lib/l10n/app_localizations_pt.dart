@@ -134,4 +134,23 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get addPhotoLabel => 'Toque para adicionar foto do item 📷';
+
+  @override
+  String get borrowButton => 'Pedir emprestado 🤝';
+
+  @override
+  String get chooseDurationTitle => 'Por quanto tempo precisa do item?';
+
+  @override
+  String durationHours(Object count) {
+    return '$count h';
+  }
+
+  @override
+  String durationDays(Object count) {
+    return '$count dias';
+  }
+
+  @override
+  String get confirmBorrowButton => 'Confirmar';
 }
