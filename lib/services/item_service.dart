@@ -74,4 +74,12 @@ class ItemService {
     });
   }
 
+  // 5. 🟢 Получить вещь из базы по её ID
+  Future<ItemModel?> getItemById(String itemId) async {
+    final doc = await _itemsCollection.doc(itemId).get();
+    if (!doc.exists || doc.data() == null) return null;
+    return ItemModel.fromMap(doc.data() as Map<String, dynamic>, doc.id);
+  }
+
+
 }
