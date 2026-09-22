@@ -43,7 +43,9 @@
   "chooseDurationTitle": "На какой срок вам нужна вещь?",
   "durationHours": "{count} ч.",
   "durationDays": "{count} дн.",
-  "confirmBorrowButton": "Подтвердить"
+  "confirmBorrowButton": "Подтвердить",
+  "statusOverdue": "Просрочено"
+
 }
 
 

@@ -81,5 +81,13 @@ class ItemService {
     return ItemModel.fromMap(doc.data() as Map<String, dynamic>, doc.id);
   }
 
+    // 6. 🟢 Пометить вещь как просроченную
+  Future<void> markItemOverdue(String itemId) async {
+    await _itemsCollection.doc(itemId).update({
+      'status': ItemStatus.overdue.name,
+    });
+  }
+
+
 
 }

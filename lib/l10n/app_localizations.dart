@@ -371,6 +371,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Подтвердить'**
   String get confirmBorrowButton;
+
+  /// No description provided for @statusOverdue.
+  ///
+  /// In ru, this message translates to:
+  /// **'Просрочено'**
+  String get statusOverdue;
 }
 
 class _AppLocalizationsDelegate

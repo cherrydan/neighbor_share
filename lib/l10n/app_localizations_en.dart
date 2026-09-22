@@ -153,4 +153,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get confirmBorrowButton => 'Confirm';
+
+  @override
+  String get statusOverdue => 'Overdue';
 }

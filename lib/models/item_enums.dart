@@ -12,10 +12,12 @@ enum ItemCategory {
 
 // 2. Статусы предложения/запроса
 enum ItemStatus {
-  available,  // Свободно / Предлагаю 🟢
-  inUse,      // Занято / В аренде 🟡
-  requested,  // Срочно ищу / SOS-запрос 🔴
+  available, // Свободно 🟢
+  inUse,     // В аренде 🟡
+  overdue,   // 🔴 Просрочен возврат!
+  requested, // Срочно ищут
 }
+
 
 // 3. Статусы сделки передачи вещи
 enum LoanStatus {

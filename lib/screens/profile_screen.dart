@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:neighbor_share/models/item_model.dart';
 import '../l10n/app_localizations.dart';
+import '../models/item_enums.dart';
+import '../models/item_model.dart';
 import '../models/loan_model.dart';
 import '../services/item_service.dart';
 import '../widgets/item_condition_card.dart';
@@ -13,32 +14,30 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    const currentUserId = 'danil_user'; // Наш текущий сосед
+    const currentUserId = 'danil_user';
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.profileTab)),
       body: StreamBuilder<LoanModel?>(
-        // 🟢 Слушаем реальную сделку из Firebase в реальном времени!
         stream: ItemService().getActiveLoanStream(currentUserId),
         builder: (context, snapshot) {
           final activeLoan = snapshot.data;
 
-          // Считаем сумму экономии: если есть активная аренда — берем её сумму, иначе 0
           final double totalSaved = activeLoan != null ? activeLoan.savedAmount : 0.0;
           final int borrowedCount = activeLoan != null ? 1 : 0;
 
           return ListView(
             padding: const EdgeInsets.all(16.0),
             children: [
-              // 1. Паспорт Экономии Денег (живые цифры!)
+              // 1. Паспорт Экономии Денег
               SavedMoneyCard(
                 totalSaved: totalSaved,
                 itemsBorrowedCount: borrowedCount,
               ),
               const SizedBox(height: 16),
 
-              // 2. Блок активной аренды: Таймер + AI Паспорт Сохранности с проверкой предмета!
-              if (activeLoan != null) ...[
+              // 2. Блок активной аренды
+              if (activeLoan != null)
                 FutureBuilder<ItemModel?>(
                   future: ItemService().getItemById(activeLoan.itemId),
                   builder: (context, itemSnapshot) {
@@ -46,16 +45,19 @@ class ProfileScreen extends StatelessWidget {
                     final itemName = item?.name ?? 'Загрузка...';
                     final itemDesc = item?.description;
 
+                    // Авто-обновление статуса на Overdue, если срок вышел
+                    final bool isOverdue = activeLoan.returnDueDate.isBefore(DateTime.now());
+                    if (isOverdue && item != null && item.status != ItemStatus.overdue) {
+                      ItemService().markItemOverdue(activeLoan.itemId);
+                    }
+
                     return Column(
                       children: [
-                        // Таймер возврата
                         ReturnTimerCard(
                           loan: activeLoan,
                           itemName: itemName,
                         ),
                         const SizedBox(height: 16),
-
-                        // 🟢 AI Паспорт Сохранности (с защитой от подмены фото!)
                         ItemConditionCard(
                           itemName: itemName,
                           itemDescription: itemDesc,
@@ -63,12 +65,9 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     );
                   },
-                ),
-              ] else ...[
-                // Если активной аренды нет — обычный паспорт без привязки
+                )
+              else
                 const ItemConditionCard(),
-              ],
-
             ],
           );
         },

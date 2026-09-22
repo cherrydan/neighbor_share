@@ -21,7 +21,7 @@ class ItemCard extends StatelessWidget {
     Color statusColor;
     String statusText;
     switch (item.status) {
-            case ItemStatus.available:
+      case ItemStatus.available:
         statusColor = const Color(0xFF2ECC71);
         statusText = l10n.statusAvailable;
         break;
@@ -29,8 +29,12 @@ class ItemCard extends StatelessWidget {
         statusColor = Colors.orange;
         statusText = l10n.statusInUse;
         break;
+      case ItemStatus.overdue: // 🔴 Тревожный красный бейдж для просрочки!
+        statusColor = Colors.red.shade700;
+        statusText = l10n.statusOverdue;
+        break;
       case ItemStatus.requested:
-        statusColor = Colors.red;
+        statusColor = Colors.blue;
         statusText = l10n.statusRequested;
         break;
 

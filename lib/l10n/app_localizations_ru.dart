@@ -154,4 +154,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get confirmBorrowButton => 'Подтвердить';
+
+  @override
+  String get statusOverdue => 'Просрочено';
 }

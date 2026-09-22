@@ -43,7 +43,9 @@
   "chooseDurationTitle": "Por quanto tempo precisa do item?",
   "durationHours": "{count} h",
   "durationDays": "{count} dias",
-  "confirmBorrowButton": "Confirmar"
+  "confirmBorrowButton": "Confirmar",
+  "statusOverdue": "Em atraso"
+
 }
 
 
