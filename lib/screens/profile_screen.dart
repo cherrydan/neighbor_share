@@ -37,28 +37,38 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // 2. Таймер Возврата (название вещи берем прямо из Firestore!)
+              // 2. Блок активной аренды: Таймер + AI Паспорт Сохранности с проверкой предмета!
               if (activeLoan != null) ...[
                 FutureBuilder<ItemModel?>(
                   future: ItemService().getItemById(activeLoan.itemId),
                   builder: (context, itemSnapshot) {
                     final item = itemSnapshot.data;
                     final itemName = item?.name ?? 'Загрузка...';
+                    final itemDesc = item?.description;
 
-                    return ReturnTimerCard(
-                      loan: activeLoan,
-                      itemName: itemName, // 🟢 100% из базы данных!
+                    return Column(
+                      children: [
+                        // Таймер возврата
+                        ReturnTimerCard(
+                          loan: activeLoan,
+                          itemName: itemName,
+                        ),
+                        const SizedBox(height: 16),
+
+                        // 🟢 AI Паспорт Сохранности (с защитой от подмены фото!)
+                        ItemConditionCard(
+                          itemName: itemName,
+                          itemDescription: itemDesc,
+                        ),
+                      ],
                     );
                   },
                 ),
-                const SizedBox(height: 16),
+              ] else ...[
+                // Если активной аренды нет — обычный паспорт без привязки
+                const ItemConditionCard(),
               ],
 
-              const SizedBox(height: 16),
-              
-
-              // 3. Паспорт Сохранности вещи с AI-экспертизой
-              const ItemConditionCard(),
             ],
           );
         },

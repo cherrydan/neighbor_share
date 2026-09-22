@@ -8,20 +8,26 @@ import '../l10n/app_localizations.dart';
 class ItemConditionCard extends StatefulWidget {
   final String? photoBeforeUrl;
   final String? photoAfterUrl;
+  final String? itemName;        // 🟢 Имя вещи
+  final String? itemDescription; // 🟢 Описание вещи
 
   const ItemConditionCard({
     super.key,
     this.photoBeforeUrl,
     this.photoAfterUrl,
+    this.itemName,
+    this.itemDescription,
   });
 
   @override
   State<ItemConditionCard> createState() => _ItemConditionCardState();
 }
 
+
 class _ItemConditionCardState extends State<ItemConditionCard> {
   Uint8List? _beforeBytes;
   Uint8List? _afterBytes;
+  
 
   bool _isAnalyzing = false;
   String? _aiVerdict;
@@ -124,10 +130,13 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
                         final languageCode = Localizations.localeOf(context).languageCode;
 
                         final verdict = await AiInspectionService.inspectItemCondition(
-                          photoBeforeBytes: _beforeBytes!,
-                          photoAfterBytes: _afterBytes!,
-                          languageCode: languageCode,
-                        );
+                        photoBeforeBytes: _beforeBytes!,
+                        photoAfterBytes: _afterBytes!,
+                        languageCode: languageCode,
+                        itemName: widget.itemName,               // 🟢 Передаем ИИ!
+                        itemDescription: widget.itemDescription, // 🟢 Передаем ИИ!
+                      );
+
 
                         if (!mounted) return;
 

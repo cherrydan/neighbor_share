@@ -6,26 +6,39 @@ import 'package:http/http.dart' as http;
 class AiInspectionService {
   static String get _apiKey => dotenv.env['GEMINI_API_KEY'] ?? '';
 
-  static Future<String> inspectItemCondition({
+    static Future<String> inspectItemCondition({
     required Uint8List photoBeforeBytes,
     required Uint8List photoAfterBytes,
     required String languageCode,
+    String? itemName,        // 🟢 Имя вещи из базы
+    String? itemDescription, // 🟢 Описание вещи из базы
   }) async {
-           final url = Uri.parse(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$_apiKey',
-    );
+   final modelName = ['gem', 'ini-', '3.6-', 'flash'].join();
 
-   
 
+  final url = Uri.parse(
+  'https://generativelanguage.googleapis.com/v1beta/models/$modelName:generateContent?key=$_apiKey',
+);
+
+
+
+    final itemContext = (itemName != null && itemName.isNotEmpty)
+        ? 'The item being inspected is: "$itemName"${itemDescription != null && itemDescription.isNotEmpty ? ' with description: "$itemDescription"' : ''}.'
+        : 'An item is being inspected.';
 
     final prompt = '''
-                    You are an expert inspecting borrowed items for damages.
-                    Compare these two images (Image 1: Before loan, Image 2: After return).
-                    Identify any new scratches, cracks, dirt, or damages.
-                    Provide a concise 2-sentence verdict.
-                    Respond strictly in language: $languageCode.
-                    If in good condition, begin with "✅" followed by the localized verdict.
-                    ''';
+        You are an expert inspecting borrowed items for damages and fraud prevention.
+        $itemContext
+
+        Instructions:
+        1. Verification: First, check if BOTH images actually show the specified item. If either image depicts an entirely unrelated object (e.g., food, animals, different tools, or a totally different item), warn immediately about the mismatch.
+        2. Condition comparison: If the images do show the specified item, compare Image 1 (Before loan) and Image 2 (After return). Identify any new scratches, cracks, dirt, or damages.
+        3. Length: Provide a concise 2-sentence verdict.
+        4. Language: Respond STRICTLY in language: $languageCode.
+        5. Success: If the item matches AND is in good condition, begin with "✅".
+        ''';
+
+    // ... дальше всё остаётся как было (body, http.post и т.д.) ...
 
 
     final body = jsonEncode({
