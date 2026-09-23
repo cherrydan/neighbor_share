@@ -163,4 +163,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get itemUnavailableButton => 'Недоступно';
+
+  @override
+  String get returnItemButton => 'Вернуть вещь 🔄';
+
+  @override
+  String get returnSuccessMessage => 'Вещь успешно возвращена хозяину! 🎉';
 }

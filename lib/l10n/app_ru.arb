@@ -46,7 +46,10 @@
   "confirmBorrowButton": "Подтвердить",
   "statusOverdue": "Просрочено",
   "itemDescriptionTitle": "Описание",
-  "itemUnavailableButton": "Недоступно"
+  "itemUnavailableButton": "Недоступно",
+  "returnItemButton": "Вернуть вещь 🔄",
+  "returnSuccessMessage": "Вещь успешно возвращена хозяину! 🎉"
+
 
 
 }

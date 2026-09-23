@@ -88,6 +88,23 @@ class ItemService {
     });
   }
 
+    // 7. 🟢 Завершить аренду и вернуть вещь хозяину
+  Future<void> returnItem({
+    required String loanId,
+    required String itemId,
+  }) async {
+    // Меняем статус сделки на "returned"
+    await _loansCollection.doc(loanId).update({
+      'status': LoanStatus.returned.name,
+    });
+
+    // Возвращаем статус самой вещи на "available" (Свободно!)
+    await _itemsCollection.doc(itemId).update({
+      'status': ItemStatus.available.name,
+    });
+  }
+
+
 
 
 }

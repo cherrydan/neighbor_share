@@ -162,4 +162,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get itemUnavailableButton => 'No disponible';
+
+  @override
+  String get returnItemButton => 'Devolver artículo 🔄';
+
+  @override
+  String get returnSuccessMessage => '¡Artículo devuelto con éxito! 🎉';
 }

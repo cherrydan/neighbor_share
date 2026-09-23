@@ -46,7 +46,10 @@
   "confirmBorrowButton": "Confirm",
   "statusOverdue": "Overdue",
   "itemDescriptionTitle": "Description",
-  "itemUnavailableButton": "Unavailable"
+  "itemUnavailableButton": "Unavailable",
+  "returnItemButton": "Return Item 🔄",
+  "returnSuccessMessage": "Item successfully returned to owner! 🎉"
+
 
 
 }

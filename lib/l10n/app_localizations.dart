@@ -389,6 +389,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Недоступно'**
   String get itemUnavailableButton;
+
+  /// No description provided for @returnItemButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вернуть вещь 🔄'**
+  String get returnItemButton;
+
+  /// No description provided for @returnSuccessMessage.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вещь успешно возвращена хозяину! 🎉'**
+  String get returnSuccessMessage;
 }
 
 class _AppLocalizationsDelegate
