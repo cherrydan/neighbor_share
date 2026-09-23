@@ -156,4 +156,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get statusOverdue => 'Atrasado';
+
+  @override
+  String get itemDescriptionTitle => 'Descripción';
+
+  @override
+  String get itemUnavailableButton => 'No disponible';
 }

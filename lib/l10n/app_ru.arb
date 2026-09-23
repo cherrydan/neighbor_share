@@ -44,7 +44,10 @@
   "durationHours": "{count} ч.",
   "durationDays": "{count} дн.",
   "confirmBorrowButton": "Подтвердить",
-  "statusOverdue": "Просрочено"
+  "statusOverdue": "Просрочено",
+  "itemDescriptionTitle": "Описание",
+  "itemUnavailableButton": "Недоступно"
+
 
 }
 

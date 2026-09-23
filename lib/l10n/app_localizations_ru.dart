@@ -157,4 +157,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get statusOverdue => 'Просрочено';
+
+  @override
+  String get itemDescriptionTitle => 'Описание';
+
+  @override
+  String get itemUnavailableButton => 'Недоступно';
 }

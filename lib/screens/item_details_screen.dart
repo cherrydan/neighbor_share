@@ -172,8 +172,8 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                   const SizedBox(height: 20),
 
                   // 4. Описание
-                  const Text(
-                    'Описание:',
+                  Text(
+                    l10n.itemDescriptionTitle,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 6),
@@ -203,7 +203,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
             child: _isBorrowing
                 ? const CircularProgressIndicator(color: Colors.white)
                 : Text(
-                    isAvailable ? l10n.borrowButton : 'Недоступно',
+                    isAvailable ? l10n.borrowButton : l10n.itemUnavailableButton,
                     style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
           ),

@@ -44,7 +44,10 @@
   "durationHours": "{count} hrs",
   "durationDays": "{count} days",
   "confirmBorrowButton": "Confirm",
-  "statusOverdue": "Overdue"
+  "statusOverdue": "Overdue",
+  "itemDescriptionTitle": "Description",
+  "itemUnavailableButton": "Unavailable"
+
 
 }
 

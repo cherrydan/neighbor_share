@@ -377,6 +377,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Просрочено'**
   String get statusOverdue;
+
+  /// No description provided for @itemDescriptionTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Описание'**
+  String get itemDescriptionTitle;
+
+  /// No description provided for @itemUnavailableButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Недоступно'**
+  String get itemUnavailableButton;
 }
 
 class _AppLocalizationsDelegate
