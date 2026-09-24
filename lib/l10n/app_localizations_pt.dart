@@ -168,4 +168,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get returnSuccessMessage => 'Item devolvido com sucesso! 🎉';
+
+  @override
+  String get signInTitle => 'Bem-vindo ao NeighborShare';
+
+  @override
+  String get signInWithGoogle => 'Entrar com o Google';
 }

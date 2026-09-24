@@ -401,6 +401,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Вещь успешно возвращена хозяину! 🎉'**
   String get returnSuccessMessage;
+
+  /// No description provided for @signInTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Добро пожаловать в NeighborShare'**
+  String get signInTitle;
+
+  /// No description provided for @signInWithGoogle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Войти через Google'**
+  String get signInWithGoogle;
 }
 
 class _AppLocalizationsDelegate

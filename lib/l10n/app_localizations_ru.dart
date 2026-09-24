@@ -169,4 +169,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get returnSuccessMessage => 'Вещь успешно возвращена хозяину! 🎉';
+
+  @override
+  String get signInTitle => 'Добро пожаловать в NeighborShare';
+
+  @override
+  String get signInWithGoogle => 'Войти через Google';
 }

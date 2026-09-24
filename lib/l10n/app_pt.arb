@@ -48,9 +48,9 @@
   "itemDescriptionTitle": "Descrição",
   "itemUnavailableButton": "Indisponível",
   "returnItemButton": "Devolver item 🔄",
-  "returnSuccessMessage": "Item devolvido com sucesso! 🎉"
-
-
+  "returnSuccessMessage": "Item devolvido com sucesso! 🎉",
+  "signInTitle": "Bem-vindo ao NeighborShare",
+  "signInWithGoogle": "Entrar com o Google"
 
 }
 

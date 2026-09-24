@@ -48,7 +48,10 @@
   "itemDescriptionTitle": "Описание",
   "itemUnavailableButton": "Недоступно",
   "returnItemButton": "Вернуть вещь 🔄",
-  "returnSuccessMessage": "Вещь успешно возвращена хозяину! 🎉"
+  "returnSuccessMessage": "Вещь успешно возвращена хозяину! 🎉",
+  "signInTitle": "Добро пожаловать в NeighborShare",
+  "signInWithGoogle": "Войти через Google"
+
 
 
 
