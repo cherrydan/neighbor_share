@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
@@ -88,28 +89,34 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
     );
   }
 
-  Future<void> _borrowItem(Duration duration) async {
-    setState(() => _isBorrowing = true);
+ Future<void> _borrowItem(Duration duration) async {
+  setState(() => _isBorrowing = true);
 
-    try {
-      // 🟢 Фиксируем сделку в облаке Firestore для нашего соседа:
-      await ItemService().borrowItem(
-        item: widget.item,
-        borrowerId: 'danil_user', // Наш текущий сосед
-        duration: duration,
-      );
+  try {
+    final user = FirebaseAuth.instance.currentUser;
 
-      if (!mounted) return;
-      Navigator.pop(context); // Возвращаемся в Ленту
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Ошибка: $e')),
-      );
-    } finally {
-      if (mounted) setState(() => _isBorrowing = false);
+    if (user == null) {
+      throw Exception('User is not signed in');
     }
+
+    await ItemService().borrowItem(
+      item: widget.item,
+      borrowerId: user.uid,
+      duration: duration,
+    );
+
+    if (!mounted) return;
+    Navigator.pop(context);
+  } catch (e) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Ошибка: $e')),
+    );
+  } finally {
+    if (mounted) setState(() => _isBorrowing = false);
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
