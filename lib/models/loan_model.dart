@@ -11,6 +11,8 @@ class LoanModel {
   final String? photoAfterUrl; // 📸 Фото состояния "ПОСЛЕ"
   final LoanStatus status;     // active, returned, overdue
   final DateTime createdAt;
+  final bool ratingApplied;
+
 
   LoanModel({
     required this.id,
@@ -23,6 +25,8 @@ class LoanModel {
     this.photoAfterUrl,
     required this.status,
     required this.createdAt,
+    this.ratingApplied = false,
+
   });
 
   // Превращаем в Map для Firestore
@@ -37,6 +41,7 @@ class LoanModel {
       'photoBeforeUrl': photoBeforeUrl,
       'photoAfterUrl': photoAfterUrl,
       'status': status.name,
+      'ratingApplied': ratingApplied,
       'createdAt': createdAt.toIso8601String(),
     };
   }
@@ -58,6 +63,7 @@ class LoanModel {
         (e) => e.name == map['status'],
         orElse: () => LoanStatus.active,
       ),
+      ratingApplied: map['ratingApplied'] as bool? ?? false,
       createdAt: map['createdAt'] != null
           ? DateTime.parse(map['createdAt'].toString())
           : DateTime.now(),

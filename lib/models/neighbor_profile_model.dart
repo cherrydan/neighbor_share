@@ -29,9 +29,9 @@ class NeighborProfileModel {
     };
   }
 
-  factory NeighborProfileModel.fromMap(Map<String, dynamic> map) {
+  factory NeighborProfileModel.fromMap(Map<String, dynamic> map, [String? docId]) {
     return NeighborProfileModel(
-      uid: map['uid'] as String? ?? '',
+      uid: docId ?? map['uid'] as String? ?? '',
       displayName: map['displayName'] as String?,
       email: map['email'] as String?,
       photoUrl: map['photoUrl'] as String?,

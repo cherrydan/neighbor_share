@@ -174,4 +174,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signInWithGoogle => 'Sign in with Google';
+
+  @override
+  String get trustScoreTitle => 'Neighbor Trust 🛡️';
+
+  @override
+  String trustScorePoints(Object score) {
+    return '$score points';
+  }
 }

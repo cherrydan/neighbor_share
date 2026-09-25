@@ -50,7 +50,10 @@
   "returnItemButton": "Return Item 🔄",
   "returnSuccessMessage": "Item successfully returned to owner! 🎉",
   "signInTitle": "Welcome to NeighborShare",
-  "signInWithGoogle": "Sign in with Google"
+  "signInWithGoogle": "Sign in with Google",
+  "trustScoreTitle": "Neighbor Trust 🛡️",
+  "trustScorePoints": "{score} points"
+
 
 
 

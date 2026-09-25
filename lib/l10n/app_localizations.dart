@@ -413,6 +413,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Войти через Google'**
   String get signInWithGoogle;
+
+  /// No description provided for @trustScoreTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Надёжность соседа 🛡️'**
+  String get trustScoreTitle;
+
+  /// No description provided for @trustScorePoints.
+  ///
+  /// In ru, this message translates to:
+  /// **'{score} баллов'**
+  String trustScorePoints(Object score);
 }
 
 class _AppLocalizationsDelegate

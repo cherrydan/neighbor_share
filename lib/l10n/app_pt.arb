@@ -50,7 +50,10 @@
   "returnItemButton": "Devolver item 🔄",
   "returnSuccessMessage": "Item devolvido com sucesso! 🎉",
   "signInTitle": "Bem-vindo ao NeighborShare",
-  "signInWithGoogle": "Entrar com o Google"
+  "signInWithGoogle": "Entrar com o Google",
+  "trustScoreTitle": "Confiança do vizinho 🛡️",
+  "trustScorePoints": "{score} pontos"
+
 
 }
 

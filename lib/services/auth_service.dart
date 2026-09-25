@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:neighbor_share/services/user_service.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -9,7 +10,7 @@ class AuthService {
 
   User? get currentUser => _auth.currentUser;
 
-  Future<UserCredential> signInWithGoogle() async {
+    Future<UserCredential> signInWithGoogle() async {
     final googleUser = await _googleSignIn.signIn();
 
     if (googleUser == null) {
@@ -23,8 +24,23 @@ class AuthService {
       idToken: googleAuth.idToken,
     );
 
-    return _auth.signInWithCredential(credential);
+    // 1. Входим в Firebase Auth
+    final userCredential = await _auth.signInWithCredential(credential);
+    final user = userCredential.user;
+
+    // 2. 🟢 Если вход успешен — создаем/подгружаем профиль соседа в Firestore!
+    if (user != null) {
+      await UserService().getOrCreateProfile(
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoUrl: user.photoURL,
+      );
+    }
+
+    return userCredential;
   }
+
 
   Future<void> signOut() async {
     await _googleSignIn.signOut();

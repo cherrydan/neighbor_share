@@ -175,4 +175,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get signInWithGoogle => 'Войти через Google';
+
+  @override
+  String get trustScoreTitle => 'Надёжность соседа 🛡️';
+
+  @override
+  String trustScorePoints(Object score) {
+    return '$score баллов';
+  }
 }

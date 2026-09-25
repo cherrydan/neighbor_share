@@ -88,21 +88,67 @@ class ItemService {
     });
   }
 
-    // 7. 🟢 Завершить аренду и вернуть вещь хозяину
-  Future<void> returnItem({
-    required String loanId,
-    required String itemId,
-  }) async {
-    // Меняем статус сделки на "returned"
-    await _loansCollection.doc(loanId).update({
+    Future<void> returnItem({
+  required String loanId,
+  required String itemId,
+}) async {
+  final loanRef = _loansCollection.doc(loanId);
+  final itemRef = _itemsCollection.doc(itemId);
+
+  await FirebaseFirestore.instance.runTransaction((transaction) async {
+    final loanSnapshot = await transaction.get(loanRef);
+
+    if (!loanSnapshot.exists || loanSnapshot.data() == null) {
+      throw Exception('Loan not found');
+    }
+
+    final loanData = loanSnapshot.data() as Map<String, dynamic>;
+
+    // Защита от повторного начисления рейтинга.
+    if (loanData['ratingApplied'] == true ||
+        loanData['status'] == LoanStatus.returned.name) {
+      return;
+    }
+
+    final borrowerId = loanData['borrowerId'] as String?;
+    if (borrowerId == null || borrowerId.isEmpty) {
+      throw Exception('Borrower ID is missing');
+    }
+
+    final dueDate = DateTime.parse(
+      loanData['returnDueDate'].toString(),
+    );
+
+    final wasOverdue = DateTime.now().isAfter(dueDate);
+    final scoreChange = wasOverdue ? -20 : 10;
+
+    final userRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(borrowerId);
+
+    transaction.update(loanRef, {
       'status': LoanStatus.returned.name,
+      'returnedAt': FieldValue.serverTimestamp(),
+      'ratingApplied': true,
+      'wasOverdue': wasOverdue,
     });
 
-    // Возвращаем статус самой вещи на "available" (Свободно!)
-    await _itemsCollection.doc(itemId).update({
+    transaction.update(itemRef, {
       'status': ItemStatus.available.name,
     });
-  }
+
+    transaction.set(
+      userRef,
+      {
+        'trustScore': FieldValue.increment(scoreChange),
+        'completedLoans': FieldValue.increment(1),
+        if (wasOverdue) 'overdueReturns': FieldValue.increment(1),
+      },
+      SetOptions(merge: true),
+    );
+  });
+}
+
 
 
 
