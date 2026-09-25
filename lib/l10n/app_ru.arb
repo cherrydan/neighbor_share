@@ -52,11 +52,11 @@
   "signInTitle": "Добро пожаловать в NeighborShare",
   "signInWithGoogle": "Войти через Google",
   "trustScoreTitle": "Надёжность соседа 🛡️",
-  "trustScorePoints": "{score} баллов"
-
-
-
-
+  "trustScorePoints": "{score} баллов",
+  "signOut": "Выйти",
+  "loadingLabel": "Загрузка…",
+  "profileInitializationError": "Не удалось загрузить профиль",
+  "returnError": "Не удалось вернуть вещь"
 
 }
 

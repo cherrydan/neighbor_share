@@ -183,4 +183,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String trustScorePoints(Object score) {
     return '$score баллов';
   }
+
+  @override
+  String get signOut => 'Выйти';
+
+  @override
+  String get loadingLabel => 'Загрузка…';
+
+  @override
+  String get profileInitializationError => 'Не удалось загрузить профиль';
+
+  @override
+  String get returnError => 'Не удалось вернуть вещь';
 }

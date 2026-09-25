@@ -52,11 +52,11 @@
   "signInTitle": "Welcome to NeighborShare",
   "signInWithGoogle": "Sign in with Google",
   "trustScoreTitle": "Neighbor Trust 🛡️",
-  "trustScorePoints": "{score} points"
-
-
-
-
+  "trustScorePoints": "{score} points",
+  "signOut": "Sign out",
+  "loadingLabel": "Loading…",
+  "profileInitializationError": "Failed to load profile",
+  "returnError": "Failed to return item"
 
 }
 

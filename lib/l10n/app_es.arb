@@ -52,11 +52,11 @@
   "signInTitle": "Bienvenido a NeighborShare",
   "signInWithGoogle": "Iniciar sesión con Google",
   "trustScoreTitle": "Confianza del vecino 🛡️",
-  "trustScorePoints": "{score} puntos"
-
-
-
-
+  "trustScorePoints": "{score} puntos",
+  "signOut": "Cerrar sesión",
+  "loadingLabel": "Cargando…",
+  "profileInitializationError": "No se pudo cargar el perfil",
+  "returnError": "No se pudo devolver el artículo"
 
 }
 

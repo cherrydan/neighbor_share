@@ -425,6 +425,30 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'{score} баллов'**
   String trustScorePoints(Object score);
+
+  /// No description provided for @signOut.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выйти'**
+  String get signOut;
+
+  /// No description provided for @loadingLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Загрузка…'**
+  String get loadingLabel;
+
+  /// No description provided for @profileInitializationError.
+  ///
+  /// In ru, this message translates to:
+  /// **'Не удалось загрузить профиль'**
+  String get profileInitializationError;
+
+  /// No description provided for @returnError.
+  ///
+  /// In ru, this message translates to:
+  /// **'Не удалось вернуть вещь'**
+  String get returnError;
 }
 
 class _AppLocalizationsDelegate

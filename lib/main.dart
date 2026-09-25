@@ -46,10 +46,13 @@ class NeighborShareApp extends StatelessWidget {
 }
 
 class AuthGate extends StatelessWidget {
+  
   const AuthGate({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return StreamBuilder<User?>(
       stream: AuthService().authStateChanges,
       builder: (context, snapshot) {
@@ -84,7 +87,8 @@ class AuthGate extends StatelessWidget {
               if (profileSnapshot.hasError) {
                 return Scaffold(
                   body: Center(
-                    child: Text('Profile initialization error: ${profileSnapshot.error}'),
+                    child: Text(l10n.profileInitializationError)
+
                   ),
                 );
               }

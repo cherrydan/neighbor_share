@@ -182,4 +182,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String trustScorePoints(Object score) {
     return '$score points';
   }
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get loadingLabel => 'Loading…';
+
+  @override
+  String get profileInitializationError => 'Failed to load profile';
+
+  @override
+  String get returnError => 'Failed to return item';
 }

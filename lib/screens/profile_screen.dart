@@ -58,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
                   return ListView(
                     padding: const EdgeInsets.all(16),
                     children: [
-                      _ProfileHeader(user: user),
+                      _ProfileHeader(user: user, l10n: l10n),
                       const SizedBox(height: 16),
 
                       // Карточка рейтинга доверия
@@ -80,7 +80,8 @@ class ProfileScreen extends StatelessWidget {
                           future: ItemService().getItemById(activeLoan.itemId),
                           builder: (context, itemSnapshot) {
                             final item = itemSnapshot.data;
-                            final itemName = item?.name ?? '…';
+                            final itemName = item?.name ?? l10n.loadingLabel;
+
                             final itemDescription = item?.description;
 
                             final isOverdue = activeLoan.returnDueDate
@@ -126,35 +127,29 @@ class ProfileScreen extends StatelessWidget {
 
 class _ProfileHeader extends StatelessWidget {
   final User user;
+  final AppLocalizations l10n;
 
   const _ProfileHeader({
     required this.user,
+    required this.l10n,
   });
 
   @override
   Widget build(BuildContext context) {
     final title = user.displayName ?? user.email ?? user.uid;
-    final photoUrl = user.photoURL;
 
     return Row(
       children: [
         CircleAvatar(
           radius: 28,
-          backgroundImage: photoUrl == null
+          backgroundImage: user.photoURL == null
               ? null
-              : NetworkImage(photoUrl),
-          child: photoUrl == null
-              ? Text(
-                  title.isEmpty ? '?' : title[0].toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
+              : NetworkImage(user.photoURL!),
+          child: user.photoURL == null
+              ? Text(title.isEmpty ? '?' : title[0].toUpperCase())
               : null,
         ),
         const SizedBox(width: 12),
-
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,17 +164,13 @@ class _ProfileHeader extends StatelessWidget {
               if (user.email != null)
                 Text(
                   user.email!,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade700,
-                  ),
+                  style: TextStyle(color: Colors.grey.shade700),
                 ),
             ],
           ),
         ),
-
         IconButton(
-          tooltip: 'Sign out',
+          tooltip: l10n.signOut,
           onPressed: () => AuthService().signOut(),
           icon: const Icon(Icons.logout_rounded),
         ),
