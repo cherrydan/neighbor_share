@@ -6,6 +6,7 @@ import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
 import '../models/item_model.dart';
 import '../services/item_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AddItemScreen extends StatefulWidget {
   const AddItemScreen({super.key});
@@ -45,6 +46,11 @@ class _AddItemScreenState extends State<AddItemScreen> {
   }
 
     Future<void> _saveItem() async {
+    // В методе _saveItem():
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      throw Exception('User is not authenticated');
+    }  
     if (!_formKey.currentState!.validate()) return;
 
     // 🟢 1. СРАЗУ включаем крутилку загрузки:
@@ -68,7 +74,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
         imageUrl: uploadedUrl,
         latitude: 38.7223,
         longitude: -9.1393,
-        ownerId: 'danil_user',
+        ownerId: user.uid,
         createdAt: DateTime.now(),
         estimatedValue: price,
       );

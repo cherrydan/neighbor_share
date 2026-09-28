@@ -26,10 +26,25 @@ class ItemService {
     });
   }
 
-  // 2. 🟢 Add a new item to Firestore
+    // 2. 🟢 Добавить новую вещь в Firestore и начислить +5 баллов к Карме!
   Future<void> addItem(ItemModel item) async {
-    await _itemsCollection.doc(item.id).set(item.toMap());
+    final itemRef = _itemsCollection.doc(item.id);
+    final userRef = FirebaseFirestore.instance.collection('users').doc(item.ownerId);
+
+    // В одной транзакции сохраняем вещь и начисляем рейтинг автору!
+    await FirebaseFirestore.instance.runTransaction((transaction) async {
+      transaction.set(itemRef, item.toMap());
+
+      transaction.set(
+        userRef,
+        {
+          'trustScore': FieldValue.increment(5), // 🟢 +5 к Карме за щедрость!
+        },
+        SetOptions(merge: true),
+      );
+    });
   }
+
 
     // 3. 🟢 Одолжить вещь: сохраняем сделку и меняем статус вещи на inUse
   Future<void> borrowItem({
