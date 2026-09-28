@@ -56,7 +56,16 @@
   "signOut": "Cerrar sesión",
   "loadingLabel": "Cargando…",
   "profileInitializationError": "No se pudo cargar el perfil",
-  "returnError": "No se pudo devolver el artículo"
+  "returnError": "No se pudo devolver el artículo",
+  "locationPickerTitle": "Ubicación del artículo en el mapa 📍",
+  "useCurrentLocationButton": "Usar mi ubicación GPS actual 🎯",
+  "tapMapHint": "Toca el mapa для ajustar la ubicación 🗺️",
+  "deleteItemButton": "Eliminar artículo 🗑️",
+  "deleteItemConfirmTitle": "¿Eliminar artículo?",
+  "deleteItemConfirmBody": "¿Estás seguro de que deseas eliminar este artículo? Se revertirá la bonificación de publicación (+5 pts).",
+  "cannotDeleteInUseError": "¡No se puede eliminar un artículo que está prestado!"
+
+
 
 }
 

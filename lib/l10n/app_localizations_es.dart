@@ -194,4 +194,27 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get returnError => 'No se pudo devolver el artículo';
+
+  @override
+  String get locationPickerTitle => 'Ubicación del artículo en el mapa 📍';
+
+  @override
+  String get useCurrentLocationButton => 'Usar mi ubicación GPS actual 🎯';
+
+  @override
+  String get tapMapHint => 'Toca el mapa для ajustar la ubicación 🗺️';
+
+  @override
+  String get deleteItemButton => 'Eliminar artículo 🗑️';
+
+  @override
+  String get deleteItemConfirmTitle => '¿Eliminar artículo?';
+
+  @override
+  String get deleteItemConfirmBody =>
+      '¿Estás seguro de que deseas eliminar este artículo? Se revertirá la bonificación de publicación (+5 pts).';
+
+  @override
+  String get cannotDeleteInUseError =>
+      '¡No se puede eliminar un artículo que está prestado!';
 }

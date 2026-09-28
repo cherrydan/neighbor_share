@@ -195,4 +195,27 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get returnError => 'Не удалось вернуть вещь';
+
+  @override
+  String get locationPickerTitle => 'Местоположение вещи на карте 📍';
+
+  @override
+  String get useCurrentLocationButton => 'Моё текущее GPS местоположение 🎯';
+
+  @override
+  String get tapMapHint => 'Нажмите на карту, чтобы уточнить место 🗺️';
+
+  @override
+  String get deleteItemButton => 'Удалить вещь 🗑️';
+
+  @override
+  String get deleteItemConfirmTitle => 'Удалить объявление?';
+
+  @override
+  String get deleteItemConfirmBody =>
+      'Вы уверены, что хотите удалить вещь из NeighborShare? Бонус за публикацию (+5 баллов) будет отменен.';
+
+  @override
+  String get cannotDeleteInUseError =>
+      'Нельзя удалить вещь, пока она находится в аренде!';
 }

@@ -194,4 +194,28 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get returnError => 'Não foi possível devolver o item';
+
+  @override
+  String get locationPickerTitle => 'Localização do item no mapa 📍';
+
+  @override
+  String get useCurrentLocationButton =>
+      'Usar a minha localização GPS atual 🎯';
+
+  @override
+  String get tapMapHint => 'Toque no mapa para ajustar a localização 🗺️';
+
+  @override
+  String get deleteItemButton => 'Eliminar item 🗑️';
+
+  @override
+  String get deleteItemConfirmTitle => 'Eliminar item?';
+
+  @override
+  String get deleteItemConfirmBody =>
+      'Tem a certeza de que pretende remover este item? O bónus de publicação (+5 pts) será revertido.';
+
+  @override
+  String get cannotDeleteInUseError =>
+      'Não é possível eliminar um item que está emprestado!';
 }

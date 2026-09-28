@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../models/item_model.dart';
 import '../models/loan_model.dart';
 import '../models/item_enums.dart';
@@ -88,6 +89,42 @@ class ItemService {
       return LoanModel.fromMap(doc.data() as Map<String, dynamic>, doc.id);
     });
   }
+
+   Future<void> deleteItem({required String itemId}) async {
+  final user = FirebaseAuth.instance.currentUser;
+  if (user == null) throw Exception('NOT_AUTHENTICATED');
+
+  final itemRef = _itemsCollection.doc(itemId);
+  final userRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
+
+  await FirebaseFirestore.instance.runTransaction((transaction) async {
+    final itemSnapshot = await transaction.get(itemRef);
+    if (!itemSnapshot.exists || itemSnapshot.data() == null) {
+      throw Exception('ITEM_NOT_FOUND');
+    }
+
+    final itemData = itemSnapshot.data() as Map<String, dynamic>;
+
+    if (itemData['ownerId'] != user.uid) {
+      throw Exception('NOT_OWNER');
+    }
+
+    final status = itemData['status'] as String?;
+    if (status == ItemStatus.inUse.name ||
+        status == ItemStatus.overdue.name) {
+      throw Exception('IN_USE_ERROR');
+    }
+
+    transaction.delete(itemRef);
+    transaction.set(
+      userRef,
+      {'trustScore': FieldValue.increment(-5)},
+      SetOptions(merge: true),
+    );
+  });
+}
+
+
 
   // 5. 🟢 Получить вещь из базы по её ID
   Future<ItemModel?> getItemById(String itemId) async {

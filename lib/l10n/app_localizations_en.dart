@@ -194,4 +194,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get returnError => 'Failed to return item';
+
+  @override
+  String get locationPickerTitle => 'Item Location on Map 📍';
+
+  @override
+  String get useCurrentLocationButton => 'Use My Current GPS Location 🎯';
+
+  @override
+  String get tapMapHint => 'Tap on the map to adjust location 🗺️';
+
+  @override
+  String get deleteItemButton => 'Delete Item 🗑️';
+
+  @override
+  String get deleteItemConfirmTitle => 'Delete Item Listing?';
+
+  @override
+  String get deleteItemConfirmBody =>
+      'Are you sure you want to remove this item? The publishing bonus (+5 pts) will be reverted.';
+
+  @override
+  String get cannotDeleteInUseError =>
+      'Cannot delete an item that is currently borrowed or overdue!';
 }

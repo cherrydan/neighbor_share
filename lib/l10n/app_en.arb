@@ -56,7 +56,16 @@
   "signOut": "Sign out",
   "loadingLabel": "Loading…",
   "profileInitializationError": "Failed to load profile",
-  "returnError": "Failed to return item"
+  "returnError": "Failed to return item",
+  "locationPickerTitle": "Item Location on Map 📍",
+  "useCurrentLocationButton": "Use My Current GPS Location 🎯",
+  "tapMapHint": "Tap on the map to adjust location 🗺️",
+  "deleteItemButton": "Delete Item 🗑️",
+  "deleteItemConfirmTitle": "Delete Item Listing?",
+  "deleteItemConfirmBody": "Are you sure you want to remove this item? The publishing bonus (+5 pts) will be reverted.",
+  "cannotDeleteInUseError": "Cannot delete an item that is currently borrowed or overdue!"
+
+
 
 }
 

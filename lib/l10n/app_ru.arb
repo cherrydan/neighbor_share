@@ -56,7 +56,16 @@
   "signOut": "Выйти",
   "loadingLabel": "Загрузка…",
   "profileInitializationError": "Не удалось загрузить профиль",
-  "returnError": "Не удалось вернуть вещь"
+  "returnError": "Не удалось вернуть вещь",
+  "locationPickerTitle": "Местоположение вещи на карте 📍",
+  "useCurrentLocationButton": "Моё текущее GPS местоположение 🎯",
+  "tapMapHint": "Нажмите на карту, чтобы уточнить место 🗺️",
+  "deleteItemButton": "Удалить вещь 🗑️",
+  "deleteItemConfirmTitle": "Удалить объявление?",
+  "deleteItemConfirmBody": "Вы уверены, что хотите удалить вещь из NeighborShare? Бонус за публикацию (+5 баллов) будет отменен.",
+  "cannotDeleteInUseError": "Нельзя удалить вещь, пока она находится в аренде!"
+
+
 
 }
 

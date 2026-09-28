@@ -449,6 +449,48 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Не удалось вернуть вещь'**
   String get returnError;
+
+  /// No description provided for @locationPickerTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Местоположение вещи на карте 📍'**
+  String get locationPickerTitle;
+
+  /// No description provided for @useCurrentLocationButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Моё текущее GPS местоположение 🎯'**
+  String get useCurrentLocationButton;
+
+  /// No description provided for @tapMapHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Нажмите на карту, чтобы уточнить место 🗺️'**
+  String get tapMapHint;
+
+  /// No description provided for @deleteItemButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Удалить вещь 🗑️'**
+  String get deleteItemButton;
+
+  /// No description provided for @deleteItemConfirmTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Удалить объявление?'**
+  String get deleteItemConfirmTitle;
+
+  /// No description provided for @deleteItemConfirmBody.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вы уверены, что хотите удалить вещь из NeighborShare? Бонус за публикацию (+5 баллов) будет отменен.'**
+  String get deleteItemConfirmBody;
+
+  /// No description provided for @cannotDeleteInUseError.
+  ///
+  /// In ru, this message translates to:
+  /// **'Нельзя удалить вещь, пока она находится в аренде!'**
+  String get cannotDeleteInUseError;
 }
 
 class _AppLocalizationsDelegate

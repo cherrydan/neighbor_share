@@ -117,16 +117,65 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   }
 }
 
+Future<void> _confirmAndDelete(BuildContext context, AppLocalizations l10n) async {
+  final confirm = await showDialog<bool>(
+    context: context,
+    builder: (ctx) => AlertDialog(
+      title: Text(l10n.deleteItemConfirmTitle),
+      content: Text(l10n.deleteItemConfirmBody),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(ctx, false),
+          child: Text(MaterialLocalizations.of(context).cancelButtonLabel),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(ctx, true),
+          style: TextButton.styleFrom(foregroundColor: Colors.red),
+          child: Text(l10n.deleteItemButton),
+        ),
+      ],
+    ),
+  );
+
+  if (confirm != true) return;
+
+  try {
+    await ItemService().deleteItem(itemId: widget.item.id);
+    if (!context.mounted) return;
+    Navigator.pop(context);
+  } catch (e) {
+    if (!context.mounted) return;
+    final message = e.toString().contains('IN_USE_ERROR')
+        ? l10n.cannotDeleteInUseError
+        : e.toString();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
+}
+
+
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final bool isAvailable = widget.item.status == ItemStatus.available;
+    final isOwner = FirebaseAuth.instance.currentUser?.uid == widget.item.ownerId;
+
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.item.name),
+     appBar: AppBar(
+  title: Text(widget.item.name),
+  actions: [
+    if (isOwner)
+      IconButton(
+        icon: const Icon(Icons.delete_outline_rounded, color: Colors.red),
+        tooltip: l10n.deleteItemButton,
+        onPressed: () => _confirmAndDelete(context, l10n),
       ),
+  ],
+),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
