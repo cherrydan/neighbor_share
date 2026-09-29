@@ -63,7 +63,9 @@
   "deleteItemButton": "Eliminar item 🗑️",
   "deleteItemConfirmTitle": "Eliminar item?",
   "deleteItemConfirmBody": "Tem a certeza de que pretende remover este item? O bónus de publicação (+5 pts) será revertido.",
-  "cannotDeleteInUseError": "Não é possível eliminar um item que está emprestado!"
+  "cannotDeleteInUseError": "Não é possível eliminar um item que está emprestado!",
+  "showItemOnMap": "Mostrar no mapa",
+  "itemDetailsButton": "Ver detalhes da coisa"
 
 
 }

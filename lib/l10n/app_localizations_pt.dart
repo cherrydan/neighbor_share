@@ -218,4 +218,10 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get cannotDeleteInUseError =>
       'Não é possível eliminar um item que está emprestado!';
+
+  @override
+  String get showItemOnMap => 'Mostrar no mapa';
+
+  @override
+  String get itemDetailsButton => 'Ver detalhes da coisa';
 }

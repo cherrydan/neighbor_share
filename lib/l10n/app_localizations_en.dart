@@ -217,4 +217,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get cannotDeleteInUseError =>
       'Cannot delete an item that is currently borrowed or overdue!';
+
+  @override
+  String get showItemOnMap => 'Show on map';
+
+  @override
+  String get itemDetailsButton => 'Open item details';
 }

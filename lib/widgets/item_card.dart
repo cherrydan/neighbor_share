@@ -6,11 +6,14 @@ import '../models/item_model.dart';
 class ItemCard extends StatelessWidget {
   final ItemModel item;
   final VoidCallback? onTap;
+  final VoidCallback? onShowOnMap;
+
 
   const ItemCard({
     super.key,
     required this.item,
     this.onTap,
+    this.onShowOnMap,
   });
 
   @override
@@ -119,6 +122,12 @@ class ItemCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF2ECC71),
                       ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      tooltip: l10n.showItemOnMap,
+                      onPressed: onShowOnMap,
+                      icon: const Icon(Icons.map_outlined),
                     ),
 
                     ],

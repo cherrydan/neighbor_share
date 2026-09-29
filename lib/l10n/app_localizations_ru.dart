@@ -218,4 +218,10 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get cannotDeleteInUseError =>
       'Нельзя удалить вещь, пока она находится в аренде!';
+
+  @override
+  String get showItemOnMap => 'Показать на карте';
+
+  @override
+  String get itemDetailsButton => 'Открыть описание';
 }

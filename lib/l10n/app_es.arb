@@ -63,8 +63,9 @@
   "deleteItemButton": "Eliminar artículo 🗑️",
   "deleteItemConfirmTitle": "¿Eliminar artículo?",
   "deleteItemConfirmBody": "¿Estás seguro de que deseas eliminar este artículo? Se revertirá la bonificación de publicación (+5 pts).",
-  "cannotDeleteInUseError": "¡No se puede eliminar un artículo que está prestado!"
-
+  "cannotDeleteInUseError": "¡No se puede eliminar un artículo que está prestado!",
+  "showItemOnMap": "Mostrar en el mapa",
+  "itemDetailsButton": "Ver detalles del artículo"
 
 
 }

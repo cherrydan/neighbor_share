@@ -63,8 +63,9 @@
   "deleteItemButton": "Удалить вещь 🗑️",
   "deleteItemConfirmTitle": "Удалить объявление?",
   "deleteItemConfirmBody": "Вы уверены, что хотите удалить вещь из NeighborShare? Бонус за публикацию (+5 баллов) будет отменен.",
-  "cannotDeleteInUseError": "Нельзя удалить вещь, пока она находится в аренде!"
-
+  "cannotDeleteInUseError": "Нельзя удалить вещь, пока она находится в аренде!",
+  "showItemOnMap": "Показать на карте",
+  "itemDetailsButton": "Открыть описание"
 
 
 }

@@ -217,4 +217,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get cannotDeleteInUseError =>
       '¡No se puede eliminar un artículo que está prestado!';
+
+  @override
+  String get showItemOnMap => 'Mostrar en el mapa';
+
+  @override
+  String get itemDetailsButton => 'Ver detalles del artículo';
 }

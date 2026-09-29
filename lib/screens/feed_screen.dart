@@ -8,11 +8,17 @@ import '../widgets/item_card.dart';
 import 'add_item_screen.dart';
 
 class FeedScreen extends StatefulWidget {
-  const FeedScreen({super.key});
+  final ValueChanged<ItemModel> onShowOnMap;
+
+  const FeedScreen({
+    super.key,
+    required this.onShowOnMap,
+  });
 
   @override
   State<FeedScreen> createState() => _FeedScreenState();
-}
+
+  }
 
 class _FeedScreenState extends State<FeedScreen> {
   ItemCategory? _selectedCategory;
@@ -97,16 +103,18 @@ class _FeedScreenState extends State<FeedScreen> {
                   itemBuilder: (context, index) {
                     final item = filteredItems[index];
                     return ItemCard(
-                            item: item,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ItemDetailsScreen(item: item),
-                                ),
-                              );
-                            },
-                          );
+                    item: item,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ItemDetailsScreen(item: item),
+                        ),
+                      );
+                    },
+                    onShowOnMap: () => widget.onShowOnMap(item),
+                  );
+
 
                   },
                 );

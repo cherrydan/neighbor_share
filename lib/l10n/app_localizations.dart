@@ -491,6 +491,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Нельзя удалить вещь, пока она находится в аренде!'**
   String get cannotDeleteInUseError;
+
+  /// No description provided for @showItemOnMap.
+  ///
+  /// In ru, this message translates to:
+  /// **'Показать на карте'**
+  String get showItemOnMap;
+
+  /// No description provided for @itemDetailsButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Открыть описание'**
+  String get itemDetailsButton;
 }
 
 class _AppLocalizationsDelegate
