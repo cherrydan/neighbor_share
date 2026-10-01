@@ -1,15 +1,17 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:neighbor_share/services/ai_inspection_service.dart';
+
 import '../l10n/app_localizations.dart';
+import '../services/ai_inspection_service.dart';
+import '../screens/paywall_screen.dart'; // 🟢 Импорт Пейволла
 
 class ItemConditionCard extends StatefulWidget {
   final String? photoBeforeUrl;
   final String? photoAfterUrl;
-  final String? itemName;        // 🟢 Имя вещи
-  final String? itemDescription; // 🟢 Описание вещи
+  final String? itemName;
+  final String? itemDescription;
+  final bool isPro; // 🟢 Статус подписки юзера
 
   const ItemConditionCard({
     super.key,
@@ -17,47 +19,44 @@ class ItemConditionCard extends StatefulWidget {
     this.photoAfterUrl,
     this.itemName,
     this.itemDescription,
+    this.isPro = false, // По умолчанию false
   });
 
   @override
   State<ItemConditionCard> createState() => _ItemConditionCardState();
 }
 
-
 class _ItemConditionCardState extends State<ItemConditionCard> {
   Uint8List? _beforeBytes;
   Uint8List? _afterBytes;
-  
-
-  bool _isAnalyzing = false;
   String? _aiVerdict;
+  bool _isLoading = false;
 
   Future<void> _pickImage(bool isBefore) async {
-  final picker = ImagePicker();
-  final picked = await picker.pickImage(source: ImageSource.gallery, imageQuality: 70);
-  if (picked != null) {
-    final bytes = await picked.readAsBytes();
-    setState(() {
-      if (isBefore) {
-        _beforeBytes = bytes;
-      } else {
-        _afterBytes = bytes;
-      }
-    });
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
+    if (picked != null) {
+      final bytes = await picked.readAsBytes();
+      setState(() {
+        if (isBefore) {
+          _beforeBytes = bytes;
+        } else {
+          _afterBytes = bytes;
+        }
+      });
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
-    // Внутри build перед return или прямо перед блоком плашки:
+    final l10n = AppLocalizations.of(context)!;
+
+    // Логика динамической окраски плашки вердикта
     final bool isSuccess = _aiVerdict != null && _aiVerdict!.startsWith('✅');
-    final Color verdictColor = isSuccess ? Colors.green : Colors.red.shade700;
+    final Color verdictColor = isSuccess ? Colors.green.shade700 : Colors.red.shade700;
     final Color verdictBgColor = isSuccess ? Colors.green.shade50 : Colors.red.shade50;
     final Color verdictBorderColor = isSuccess ? Colors.green.shade300 : Colors.red.shade300;
     final IconData verdictIcon = isSuccess ? Icons.check_circle_rounded : Icons.warning_amber_rounded;
-
-    final l10n = AppLocalizations.of(context)!;
 
     return Card(
       elevation: 2,
@@ -67,85 +66,70 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Заголовок
             Row(
               children: [
-                const Icon(Icons.verified_user_rounded, color: Colors.indigo, size: 24),
+                const Icon(Icons.verified_user_outlined, color: Color(0xFF3F51B5)),
                 const SizedBox(width: 8),
                 Text(
                   l10n.conditionPassportTitle,
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
+                if (widget.isPro) ...[
+                  const SizedBox(width: 8),
+                  const Icon(Icons.stars_rounded, color: Colors.amber, size: 20),
+                ],
               ],
             ),
             const SizedBox(height: 16),
-
-            // Две фото-плашки рядом
             Row(
               children: [
-                // 1. Фото ДО
-                Expanded(
-                  child: _buildPhotoSlot(
-                    label: l10n.photoBeforeLabel,
-                    icon: Icons.camera_alt_outlined,
-                    imageBytes: _beforeBytes,
-                    onTap: () => _pickImage(true),
-                  ),
-                ),
+                _buildPhotoSlot(true, _beforeBytes, l10n.photoBeforeLabel),
                 const SizedBox(width: 12),
-
-                // 2. Фото ПОСЛЕ
-                Expanded(
-                  child: _buildPhotoSlot(
-                    label: l10n.photoAfterLabel,
-                    icon: Icons.assignment_turned_in_outlined,
-                    imageBytes: _afterBytes,
-                    onTap: () => _pickImage(false),
-                  ),
-                ),
+                _buildPhotoSlot(false, _afterBytes, l10n.photoAfterLabel),
               ],
             ),
             const SizedBox(height: 16),
-
-                        // Кнопка AI Анализа
+            
+            // Кнопка запуска экспертизы с проверкой PRO
             SizedBox(
               width: double.infinity,
+              height: 48,
               child: ElevatedButton.icon(
-                onPressed: _isAnalyzing
+                onPressed: (_beforeBytes == null || _afterBytes == null || _isLoading)
                     ? null
                     : () async {
-                        // Проверяем, выбраны ли оба фото:
-                        if (_beforeBytes == null || _afterBytes == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(l10n.addBothPhotosWarning)),
+                        // 🟢 ПРОВЕРКА ПОДПИСКИ ПЕРЕД ЗАПУСКОМ ИИ:
+                        if (!widget.isPro) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const PaywallScreen()),
                           );
                           return;
                         }
 
+                        // Если юзер PRO — запускаем оригинальный код анализа
                         setState(() {
-                          _isAnalyzing = true;
+                          _isLoading = true;
                           _aiVerdict = null;
                         });
 
-                        final languageCode = Localizations.localeOf(context).languageCode;
-
-                        final verdict = await AiInspectionService.inspectItemCondition(
-                        photoBeforeBytes: _beforeBytes!,
-                        photoAfterBytes: _afterBytes!,
-                        languageCode: languageCode,
-                        itemName: widget.itemName,               // 🟢 Передаем ИИ!
-                        itemDescription: widget.itemDescription, // 🟢 Передаем ИИ!
-                      );
-
-
-                        if (!mounted) return;
-
-                        setState(() {
-                          _isAnalyzing = false;
-                          _aiVerdict = verdict;
-                        });
+                        try {
+                          final languageCode = Localizations.localeOf(context).languageCode;
+                          final verdict = await AiInspectionService.inspectItemCondition(
+                            photoBeforeBytes: _beforeBytes!,
+                            photoAfterBytes: _afterBytes!,
+                            languageCode: languageCode,
+                            itemName: widget.itemName,
+                            itemDescription: widget.itemDescription,
+                          );
+                          setState(() => _aiVerdict = verdict);
+                        } catch (e) {
+                          setState(() => _aiVerdict = 'Error: $e');
+                        } finally {
+                          setState(() => _isLoading = false);
+                        }
                       },
-                icon: _isAnalyzing
+                icon: _isLoading
                     ? const SizedBox(
                         width: 18,
                         height: 18,
@@ -154,94 +138,76 @@ class _ItemConditionCardState extends State<ItemConditionCard> {
                     : const Icon(Icons.auto_awesome_rounded),
                 label: Text(l10n.aiInspectButton),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.indigo,
+                  backgroundColor: const Color(0xFF3F51B5),
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
               ),
             ),
 
-
-            // Вывод вердикта AI
+            // Вывод вердикта ИИ с динамическим стилем
             if (_aiVerdict != null) ...[
-  const SizedBox(height: 12),
-  Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(
-      color: verdictBgColor,
-      borderRadius: BorderRadius.circular(10),
-      border: Border.all(color: verdictBorderColor),
-    ),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(verdictIcon, color: verdictColor, size: 20),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            _aiVerdict!,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-              color: verdictColor,
-            ),
-          ),
-        ),
-      ],
-    ),
-  ),
-],
-
+              const SizedBox(height: 12),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: verdictBgColor,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: verdictBorderColor),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(verdictIcon, color: verdictColor, size: 20),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        _aiVerdict!,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: verdictColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ],
         ),
       ),
     );
   }
 
-  // Вспомогательный слот для фото
-  Widget _buildPhotoSlot({
-  required String label,
-  required IconData icon,
-  required Uint8List? imageBytes,
-  required VoidCallback onTap,
-}) {
-  return InkWell(
-    onTap: onTap,
-    borderRadius: BorderRadius.circular(12),
-    child: Container(
-      height: 110,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade300),
+  Widget _buildPhotoSlot(bool isBefore, Uint8List? bytes, String label) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => _pickImage(isBefore),
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.grey.shade300, width: 1),
+          ),
+          child: bytes != null
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(11),
+                  child: Image.memory(bytes, fit: BoxFit.cover),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(isBefore ? Icons.camera_alt_outlined : Icons.assignment_turned_in_outlined,
+                        color: Colors.grey.shade600),
+                    const SizedBox(height: 4),
+                    Text(label, style: TextStyle(fontSize: 11, color: Colors.grey.shade600)),
+                  ],
+                ),
+        ),
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: imageBytes != null
-            ? Image.memory(imageBytes, fit: BoxFit.cover, width: double.infinity)
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(icon, size: 36, color: Colors.grey.shade600),
-                  const SizedBox(height: 6),
-                  Text(
-                    label,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey.shade700,
-                    ),
-                  ),
-                ],
-              ),
-      ),
-    ),
-  );
-}
-
+    );
+  }
 }

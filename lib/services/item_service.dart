@@ -201,6 +201,13 @@ class ItemService {
   });
 }
 
+  // 9. 🟢 Подсчитать количество активных вещей конкретного пользователя
+  Future<int> getUserItemsCount(String userId) async {
+    final snapshot = await _itemsCollection
+        .where('ownerId', isEqualTo: userId)
+        .get();
+    return snapshot.docs.length;
+  }
 
 
 

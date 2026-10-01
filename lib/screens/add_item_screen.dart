@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:neighbor_share/screens/paywall_screen.dart';
+import 'package:neighbor_share/services/user_service.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
@@ -72,7 +74,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
     }
   }
 
-  Future<void> _saveItem() async {
+    Future<void> _saveItem() async {
     if (!_formKey.currentState!.validate()) return;
 
     final user = FirebaseAuth.instance.currentUser;
@@ -86,6 +88,23 @@ class _AddItemScreenState extends State<AddItemScreen> {
     setState(() => _isSaving = true);
 
     try {
+      // 🟢 1. Проверяем лимиты бесплатного тарифа
+      final int activeItemsCount = await ItemService().getUserItemsCount(user.uid);
+      final profile = await UserService().getOrCreateProfile(uid: user.uid);
+
+      if (activeItemsCount >= 2 && !profile.isPro) {
+        // Если вещей уже 2 или больше, и юзер не PRO — отменяем сохранение и шлем на Пейволл!
+        setState(() => _isSaving = false);
+        if (!mounted) return;
+        
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PaywallScreen()),
+        );
+        return;
+      }
+
+      // 🟢 2. Если лимиты не превышены — идет стандартная публикация...
       String? uploadedUrl;
       if (_imageBytes != null) {
         uploadedUrl = await CloudinaryService.uploadImage(_imageBytes!);
@@ -100,7 +119,6 @@ class _AddItemScreenState extends State<AddItemScreen> {
         category: _selectedCategory,
         status: ItemStatus.available,
         imageUrl: uploadedUrl,
-        // 🟢 Передаем координаты с карты!
         latitude: _selectedLocation.latitude,
         longitude: _selectedLocation.longitude,
         ownerId: user.uid,
@@ -121,6 +139,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
       if (mounted) setState(() => _isSaving = false);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

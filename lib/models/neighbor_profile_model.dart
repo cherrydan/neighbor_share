@@ -6,6 +6,7 @@ class NeighborProfileModel {
   final int trustScore;
   final int completedLoans;
   final int overdueReturns;
+  final bool isPro; // 🟢 Добавили флаг PRO!
 
   const NeighborProfileModel({
     required this.uid,
@@ -15,6 +16,7 @@ class NeighborProfileModel {
     this.trustScore = 100,
     this.completedLoans = 0,
     this.overdueReturns = 0,
+    this.isPro = false, // 🟢 По умолчанию обычный юзер
   });
 
   Map<String, dynamic> toMap() {
@@ -26,6 +28,7 @@ class NeighborProfileModel {
       'trustScore': trustScore,
       'completedLoans': completedLoans,
       'overdueReturns': overdueReturns,
+      'isPro': isPro, // 🟢 Пишем в Firestore
     };
   }
 
@@ -38,6 +41,7 @@ class NeighborProfileModel {
       trustScore: (map['trustScore'] as num?)?.toInt() ?? 100,
       completedLoans: (map['completedLoans'] as num?)?.toInt() ?? 0,
       overdueReturns: (map['overdueReturns'] as num?)?.toInt() ?? 0,
+      isPro: map['isPro'] as bool? ?? false, // 🟢 Читаем из Firestore
     );
   }
 }
