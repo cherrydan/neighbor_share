@@ -44,6 +44,7 @@ dependencies:
   latlong2: ^0.9.1
   google_sign_in: ^6.2.1
   geolocator: ^13.0.1
+  purchases_flutter: 
 
 
 
