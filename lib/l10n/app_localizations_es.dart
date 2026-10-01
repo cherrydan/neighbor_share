@@ -223,4 +223,29 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get itemDetailsButton => 'Ver detalles del artículo';
+
+  @override
+  String get proTitle => '¡Conviértete en Vecino PRO! 💎';
+
+  @override
+  String get proSubtitle =>
+      'Apoya a tu comunidad y desbloquea todas las funciones';
+
+  @override
+  String get proFeatureAI => 'Inspección de artículos con IA ilimitada 🤖';
+
+  @override
+  String get proFeatureUnlimited => 'Publicaciones de artículos ilimitadas 📦';
+
+  @override
+  String get proFeatureBadge => 'Marco de perfil dorado y estado Elite 👑';
+
+  @override
+  String get proPrice => '\$1.99 / mes';
+
+  @override
+  String get subscribeButton => 'Iniciar prueba gratuita de 7 días';
+
+  @override
+  String get restorePurchases => 'Restaurar compras';
 }

@@ -503,6 +503,54 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Открыть описание'**
   String get itemDetailsButton;
+
+  /// No description provided for @proTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Стань PRO Соседом! 💎'**
+  String get proTitle;
+
+  /// No description provided for @proSubtitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Поддержи сообщество и получи максимум возможностей'**
+  String get proSubtitle;
+
+  /// No description provided for @proFeatureAI.
+  ///
+  /// In ru, this message translates to:
+  /// **'Безлимитная AI-экспертиза вещей 🤖'**
+  String get proFeatureAI;
+
+  /// No description provided for @proFeatureUnlimited.
+  ///
+  /// In ru, this message translates to:
+  /// **'Неограниченное число объявлений 📦'**
+  String get proFeatureUnlimited;
+
+  /// No description provided for @proFeatureBadge.
+  ///
+  /// In ru, this message translates to:
+  /// **'Золотая рамка и статус Elite Neighbor 👑'**
+  String get proFeatureBadge;
+
+  /// No description provided for @proPrice.
+  ///
+  /// In ru, this message translates to:
+  /// **'\$1.99 / месяц'**
+  String get proPrice;
+
+  /// No description provided for @subscribeButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Попробовать бесплатно 7 дней'**
+  String get subscribeButton;
+
+  /// No description provided for @restorePurchases.
+  ///
+  /// In ru, this message translates to:
+  /// **'Восстановить покупки'**
+  String get restorePurchases;
 }
 
 class _AppLocalizationsDelegate

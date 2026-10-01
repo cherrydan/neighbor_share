@@ -224,4 +224,29 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get itemDetailsButton => 'Открыть описание';
+
+  @override
+  String get proTitle => 'Стань PRO Соседом! 💎';
+
+  @override
+  String get proSubtitle =>
+      'Поддержи сообщество и получи максимум возможностей';
+
+  @override
+  String get proFeatureAI => 'Безлимитная AI-экспертиза вещей 🤖';
+
+  @override
+  String get proFeatureUnlimited => 'Неограниченное число объявлений 📦';
+
+  @override
+  String get proFeatureBadge => 'Золотая рамка и статус Elite Neighbor 👑';
+
+  @override
+  String get proPrice => '\$1.99 / месяц';
+
+  @override
+  String get subscribeButton => 'Попробовать бесплатно 7 дней';
+
+  @override
+  String get restorePurchases => 'Восстановить покупки';
 }

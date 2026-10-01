@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:neighbor_share/screens/paywall_screen.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
@@ -24,7 +25,19 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.profileTab),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.diamond_outlined, color: Color(0xFF2ECC71)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PaywallScreen()),
+              );
+            },
+          ),
+        ],
       ),
+
       body: StreamBuilder<User?>(
         stream: AuthService().authStateChanges,
         builder: (context, authSnapshot) {

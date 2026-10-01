@@ -223,4 +223,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get itemDetailsButton => 'Open item details';
+
+  @override
+  String get proTitle => 'Become a PRO Neighbor! 💎';
+
+  @override
+  String get proSubtitle => 'Support your community and unlock all features';
+
+  @override
+  String get proFeatureAI => 'Unlimited AI item inspection 🤖';
+
+  @override
+  String get proFeatureUnlimited => 'Unlimited item listings 📦';
+
+  @override
+  String get proFeatureBadge => 'Golden profile frame & Elite status 👑';
+
+  @override
+  String get proPrice => '\$1.99 / month';
+
+  @override
+  String get subscribeButton => 'Start 7-day Free Trial';
+
+  @override
+  String get restorePurchases => 'Restore purchases';
 }

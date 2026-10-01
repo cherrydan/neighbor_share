@@ -65,7 +65,16 @@
   "deleteItemConfirmBody": "Вы уверены, что хотите удалить вещь из NeighborShare? Бонус за публикацию (+5 баллов) будет отменен.",
   "cannotDeleteInUseError": "Нельзя удалить вещь, пока она находится в аренде!",
   "showItemOnMap": "Показать на карте",
-  "itemDetailsButton": "Открыть описание"
+  "itemDetailsButton": "Открыть описание",
+    "proTitle": "Стань PRO Соседом! 💎",
+  "proSubtitle": "Поддержи сообщество и получи максимум возможностей",
+  "proFeatureAI": "Безлимитная AI-экспертиза вещей 🤖",
+  "proFeatureUnlimited": "Неограниченное число объявлений 📦",
+  "proFeatureBadge": "Золотая рамка и статус Elite Neighbor 👑",
+  "proPrice": "$1.99 / месяц",
+  "subscribeButton": "Попробовать бесплатно 7 дней",
+  "restorePurchases": "Восстановить покупки"
+
 
 
 }

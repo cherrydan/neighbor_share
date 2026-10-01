@@ -224,4 +224,29 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get itemDetailsButton => 'Ver detalhes da coisa';
+
+  @override
+  String get proTitle => 'Torna-te um Vizinho PRO! 💎';
+
+  @override
+  String get proSubtitle =>
+      'Apoia a tua comunidade e desbloqueia todas as funcionalidades';
+
+  @override
+  String get proFeatureAI => 'Inspeção de itens com IA ilimitada 🤖';
+
+  @override
+  String get proFeatureUnlimited => 'Publicações de itens ilimitadas 📦';
+
+  @override
+  String get proFeatureBadge => 'Moldura de perfil dourada e estatuto Elite 👑';
+
+  @override
+  String get proPrice => '\$1.99 / mês';
+
+  @override
+  String get subscribeButton => 'Iniciar teste gratuito de 7 dias';
+
+  @override
+  String get restorePurchases => 'Restaurar compras';
 }

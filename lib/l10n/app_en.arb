@@ -65,7 +65,16 @@
   "deleteItemConfirmBody": "Are you sure you want to remove this item? The publishing bonus (+5 pts) will be reverted.",
   "cannotDeleteInUseError": "Cannot delete an item that is currently borrowed or overdue!",
   "showItemOnMap": "Show on map",
-  "itemDetailsButton": "Open item details"
+  "itemDetailsButton": "Open item details",
+    "proTitle": "Become a PRO Neighbor! 💎",
+  "proSubtitle": "Support your community and unlock all features",
+  "proFeatureAI": "Unlimited AI item inspection 🤖",
+  "proFeatureUnlimited": "Unlimited item listings 📦",
+  "proFeatureBadge": "Golden profile frame & Elite status 👑",
+  "proPrice": "$1.99 / month",
+  "subscribeButton": "Start 7-day Free Trial",
+  "restorePurchases": "Restore purchases"
+
 
 
 

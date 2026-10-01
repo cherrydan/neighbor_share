@@ -65,7 +65,16 @@
   "deleteItemConfirmBody": "¿Estás seguro de que deseas eliminar este artículo? Se revertirá la bonificación de publicación (+5 pts).",
   "cannotDeleteInUseError": "¡No se puede eliminar un artículo que está prestado!",
   "showItemOnMap": "Mostrar en el mapa",
-  "itemDetailsButton": "Ver detalles del artículo"
+  "itemDetailsButton": "Ver detalles del artículo",
+  "proTitle": "¡Conviértete en Vecino PRO! 💎",
+  "proSubtitle": "Apoya a tu comunidad y desbloquea todas las funciones",
+  "proFeatureAI": "Inspección de artículos con IA ilimitada 🤖",
+  "proFeatureUnlimited": "Publicaciones de artículos ilimitadas 📦",
+  "proFeatureBadge": "Marco de perfil dorado y estado Elite 👑",
+  "proPrice": "$1.99 / mes",
+  "subscribeButton": "Iniciar prueba gratuita de 7 días",
+  "restorePurchases": "Restaurar compras"
+
 
 
 }
