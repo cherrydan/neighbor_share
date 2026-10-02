@@ -40,4 +40,12 @@ class UserService {
       return NeighborProfileModel.fromMap(doc.data() as Map<String, dynamic>, doc.id);
     });
   }
+
+    // 3. 🟢 Обновить статус PRO подписки пользователя
+  Future<void> updateProStatus(String uid, bool isPro) async {
+    await _usersCollection.doc(uid).set({
+      'isPro': isPro,
+    }, SetOptions(merge: true));
+  }
+
 }

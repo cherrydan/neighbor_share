@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:neighbor_share/services/purchase_service.dart';
 
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
@@ -20,6 +21,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+   // 🟢 Инициализируем RevenueCat!
+     await PurchaseService.init();
 
   runApp(const NeighborShareApp());
 }
@@ -68,6 +72,10 @@ class AuthGate extends StatelessWidget {
 
         // Если пользователь авторизован
         if (user != null) {
+             
+            PurchaseService.login(user.uid);
+   
+
           return FutureBuilder(
             future: UserService().getOrCreateProfile(
               uid: user.uid,
