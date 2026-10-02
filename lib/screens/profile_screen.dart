@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:neighbor_share/screens/paywall_screen.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/item_enums.dart';
@@ -14,6 +13,7 @@ import '../widgets/item_condition_card.dart';
 import '../widgets/return_timer_card.dart';
 import '../widgets/saved_money_card.dart';
 import '../widgets/trust_score_card.dart';
+import 'paywall_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -37,7 +37,6 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
-
       body: StreamBuilder<User?>(
         stream: AuthService().authStateChanges,
         builder: (context, authSnapshot) {
@@ -59,6 +58,7 @@ class ProfileScreen extends StatelessWidget {
             stream: UserService().getUserProfileStream(user.uid),
             builder: (context, profileSnapshot) {
               final profile = profileSnapshot.data;
+              final isPro = profile?.isPro ?? false;
 
               return StreamBuilder<LoanModel?>(
                 stream: ItemService().getActiveLoanStream(user.uid),
@@ -71,7 +71,11 @@ class ProfileScreen extends StatelessWidget {
                   return ListView(
                     padding: const EdgeInsets.all(16),
                     children: [
-                      _ProfileHeader(user: user, l10n: l10n),
+                      _ProfileHeader(
+                        user: user,
+                        isPro: isPro,
+                        l10n: l10n,
+                      ),
                       const SizedBox(height: 16),
 
                       // Карточка рейтинга доверия
@@ -94,13 +98,11 @@ class ProfileScreen extends StatelessWidget {
                           builder: (context, itemSnapshot) {
                             final item = itemSnapshot.data;
                             final itemName = item?.name ?? l10n.loadingLabel;
-
                             final itemDescription = item?.description;
 
                             final isOverdue = activeLoan.returnDueDate
                                 .isBefore(DateTime.now());
 
-                            // Обновляем статус вещи после истечения срока.
                             if (isOverdue &&
                                 item != null &&
                                 item.status != ItemStatus.overdue) {
@@ -114,18 +116,19 @@ class ProfileScreen extends StatelessWidget {
                                   itemName: itemName,
                                 ),
                                 const SizedBox(height: 16),
-
-                                // AI-проверка получает данные вещи из Firestore.
                                 ItemConditionCard(
                                   itemName: itemName,
                                   itemDescription: itemDescription,
+                                  isPro: isPro,
                                 ),
                               ],
                             );
                           },
                         )
                       else
-                        const ItemConditionCard(),
+                        ItemConditionCard(
+                          isPro: isPro,
+                        ),
                     ],
                   );
                 },
@@ -140,10 +143,12 @@ class ProfileScreen extends StatelessWidget {
 
 class _ProfileHeader extends StatelessWidget {
   final User user;
+  final bool isPro;
   final AppLocalizations l10n;
 
   const _ProfileHeader({
     required this.user,
+    required this.isPro,
     required this.l10n,
   });
 
@@ -153,35 +158,84 @@ class _ProfileHeader extends StatelessWidget {
 
     return Row(
       children: [
-        CircleAvatar(
-          radius: 28,
-          backgroundImage: user.photoURL == null
-              ? null
-              : NetworkImage(user.photoURL!),
-          child: user.photoURL == null
-              ? Text(title.isEmpty ? '?' : title[0].toUpperCase())
-              : null,
+        // 🟢 Золотой градиент вокруг аватара для PRO-соседа
+        Container(
+          padding: EdgeInsets.all(isPro ? 3 : 0),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: isPro
+                ? const LinearGradient(
+                    colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                  )
+                : null,
+          ),
+          child: CircleAvatar(
+            radius: 28,
+            backgroundImage: user.photoURL == null
+                ? null
+                : NetworkImage(user.photoURL!),
+            child: user.photoURL == null
+                ? Text(
+                    title.isEmpty ? '?' : title[0].toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : null,
+          ),
         ),
         const SizedBox(width: 12),
+
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  // 🟢 Бейдж PRO рядом с именем
+                  if (isPro) ...[
+                    const SizedBox(width: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFD700),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: const Text(
+                        'PRO 👑',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
               ),
               if (user.email != null)
                 Text(
                   user.email!,
-                  style: TextStyle(color: Colors.grey.shade700),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey.shade700,
+                  ),
                 ),
             ],
           ),
         ),
+
         IconButton(
           tooltip: l10n.signOut,
           onPressed: () => AuthService().signOut(),
